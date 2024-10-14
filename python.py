@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import os
 
 # %%
 df_carrier = []
@@ -17,7 +18,9 @@ files = [
     '2024_T_T100D_SEGMENT_ALL_CARRIER.csv'
 ]
 
-df_carrier = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
+folder_path = 'DATA'
+
+df_carrier = pd.concat([pd.read_csv(os.path.join(folder_path, f)) for f in files], ignore_index=True)
 # df_carrier.replace(0, np.nan, inplace=True)
 
 df_carrier.head()
@@ -62,21 +65,22 @@ df_missing_ground_time.head()
 
 # %%
 # Import lookup tables
-tab_aircraft_config = pd.read_csv('L_AIRCRAFT_CONFIG.csv')
-tab_aircraft_type = pd.read_csv('L_AIRCRAFT_TYPE.csv')
-tab_airport_id = pd.read_csv('L_AIRPORT_ID.csv')
-tab_airport = pd.read_csv('L_AIRPORT.csv')
-tab_distance_group = pd.read_csv('L_DISTANCE_GROUP_500.csv')
-tab_service_class = pd.read_csv('L_SERVICE_CLASS.csv')
-tab_unique_carriers = pd.read_csv('L_UNIQUE_CARRIERS.csv')
+folder_path = 'TABLES'
+tab_aircraft_config = pd.read_csv(os.path.join(folder_path, 'L_AIRCRAFT_CONFIG.csv'))
+tab_aircraft_type = pd.read_csv(os.path.join(folder_path, 'L_AIRCRAFT_TYPE.csv'))
+tab_airport_id = pd.read_csv(os.path.join(folder_path, 'L_AIRPORT_ID.csv'))
+tab_airport = pd.read_csv(os.path.join(folder_path, 'L_AIRPORT.csv'))
+tab_distance_group = pd.read_csv(os.path.join(folder_path, 'L_DISTANCE_GROUP_500.csv'))
+tab_service_class = pd.read_csv(os.path.join(folder_path, 'L_SERVICE_CLASS.csv'))
+tab_unique_carriers = pd.read_csv(os.path.join(folder_path, 'L_UNIQUE_CARRIERS.csv'))
 
 
 # %%
 # Import df_aiport (predictor dataset)
 
 df_airport = []
-
-df_airport = pd.read_csv("airports.csv")
+folder_path = 'DATA'
+df_airport = pd.read_csv(os.path.join(folder_path, 'airports.csv'))
 
 df_airport.head()
 
