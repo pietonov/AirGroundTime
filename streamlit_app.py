@@ -42,3 +42,27 @@ st.subheader("Average Ground Time by Aircraft Configuration")
 bar_chart_data = filtered_df.groupby('AIRCRAFT_CONFIG_DESC').agg(average_ground_time=('average_ground_time', 'mean')).reset_index()
 fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_time', title='Average Ground Time by Aircraft Configuration')
 st.plotly_chart(fig_bar)
+
+
+st.title("Flight Statistics Interactive Visualization")
+
+
+
+# Docs
+st.markdown("""
+## Documentation
+
+### Purpose
+This app visualizes flight statistics in United States. User can explore total number of flights and the average of ground time based on aircraft configuration type.
+
+### Instructions
+- **Select Year:** Use the sidebar to filter the data by year.
+- **Select Aircraft Configuration:** select the aircraft config in the sidebar.
+- **Interactive Charts:** User can hover on data point to see the detail, also can zoom in and out depend on usage.
+
+### Data Description
+- **YEAR:** Year of data
+- **AIRCRAFT_CONFIG_DESC:** Type of aircraft: Passenger Flight, Freight, Sea, etc.
+- **total_flights:** Total number of flights.
+- **average_ground_time:** The average ground time.
+""")
