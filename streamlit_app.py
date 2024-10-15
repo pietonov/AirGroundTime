@@ -54,8 +54,11 @@ fig_heatmap = px.imshow(
     labels=dict(x="Features", y="Features", color="Correlation"),
     x=full_correlation_matrix_df.columns,
     y=full_correlation_matrix_df.columns,
-    title="Full Feature Correlation Matrix"
+    title="Full Feature Correlation Matrix",
+    width=800,
+    height=800 
 )
+fig_heatmap.update_layout(margin=dict(l=100, r=100, b=100, t=100))
 st.plotly_chart(fig_heatmap)
 
 
