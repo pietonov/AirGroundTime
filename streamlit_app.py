@@ -14,7 +14,7 @@ def load_correlation_matrix():
 
 # Load the histogram summary data for GROUND_TIME
 def load_histogram_summary():
-    return pd.read_csv('histogram_summary_ground_time.csv')
+    return pd.read_csv('DATA/histogram_summary_ground_time.csv')
 
 df = load_data()
 full_correlation_matrix_df = load_correlation_matrix()
