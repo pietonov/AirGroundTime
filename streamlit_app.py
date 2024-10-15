@@ -52,9 +52,12 @@ st.subheader("Full Correlation Heatmap")
 fig_heatmap = px.imshow(
     full_correlation_matrix_df,
     labels=dict(x="Features", y="Features", color="Correlation"),
+    color_continuous_scale="RdBu",
     x=full_correlation_matrix_df.columns,
     y=full_correlation_matrix_df.columns,
     title="Full Feature Correlation Matrix",
+    zmin=-1,
+    zmax=1,
     width=800,
     height=800 
 )
