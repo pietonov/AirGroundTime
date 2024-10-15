@@ -56,7 +56,7 @@ st.plotly_chart(fig_bar)
 
 
 # Dropdown for colormap selection
-colormap = st.selectbox("Select a colormap:", options=["RdBu", "Viridis", "Cividis", "Plasma", "Inferno", "Magma"])
+colormap = st.selectbox("Select a colormap:", options=["RdBu", "RdBu_r", "Viridis", "Cividis", "Plasma", "Inferno", "Magma"])
 
 # Add "Full Correlation Matrix" as an option in the dropdown
 all_options = ["Full Correlation Matrix"] + list(full_correlation_matrix_df.columns)
