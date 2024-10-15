@@ -44,11 +44,13 @@ fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_tim
 st.plotly_chart(fig_bar)
 
 
-st.title("Flight Statistics Interactive Visualization")
 
 
 
 # Docs
+
+st.title("Flight Statistics Interactive Documentation")
+
 st.markdown("""
 ## Documentation
 
