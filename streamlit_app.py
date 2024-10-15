@@ -3,12 +3,10 @@ import pandas as pd
 import plotly.express as px
 
 # Load the summarized data
-@st.cache
 def load_data():
     return pd.read_csv('DATA/summarized_flight_data.csv')
 
 # Load the full correlation matrix data
-@st.cache
 def load_correlation_matrix():
     return pd.read_csv('DATA/correlation_matrix.csv')
 
