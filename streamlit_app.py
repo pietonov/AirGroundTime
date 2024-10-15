@@ -48,48 +48,56 @@ fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_tim
 st.plotly_chart(fig_bar)
 
 
-# Full Correlation Matrix
-st.subheader("Full Correlation Heatmap")
-fig_full_heatmap = px.imshow(
-    full_correlation_matrix_df,
-    labels=dict(x="Features", y="Features", color="Correlation"),
-    x=full_correlation_matrix_df.columns,
-    y=full_correlation_matrix_df.columns,
-    title="Full Feature Correlation Matrix",
-    color_continuous_scale="RdBu",
-    zmin=-1,
-    zmax=1,
-    width=800,
-    height=800
-)
 
-# Show the full correlation heatmap
-st.plotly_chart(fig_full_heatmap)
 
-# Feature Selection for Correlation
-selected_feature = st.selectbox('Select a feature to view correlations:', full_correlation_matrix_df.columns)
 
-# Show correlations for the selected feature
-selected_correlation = full_correlation_matrix_df[[selected_feature]].transpose()
 
-# Interactive Heatmap for the selected feature
-st.subheader(f"Correlation Heatmap for {selected_feature}")
-fig_feature_heatmap = px.imshow(
-    selected_correlation,
-    labels=dict(x="Features", y=selected_feature, color="Correlation"),
-    x=full_correlation_matrix_df.columns,
-    y=[selected_feature],
-    title=f"Correlation Heatmap for {selected_feature}",
-    color_continuous_scale="RdBu",
-    zmin=-1,
-    zmax=1,
-    width=800,
-    height=400
-)
 
-# Show the heatmap for the selected feature
-st.plotly_chart(fig_feature_heatmap)
 
+
+# Dropdown for colormap selection
+colormap = st.selectbox("Select a colormap:", options=["RdBu", "Viridis", "Cividis", "Plasma", "Inferno", "Magma"])
+
+# Add "Full Correlation Matrix" as an option in the dropdown
+all_options = ["Full Correlation Matrix"] + list(full_correlation_matrix_df.columns)
+selected_feature = st.selectbox('Select a feature to view correlations:', all_options)
+
+# Display either the full correlation matrix or the specific feature's correlations
+if selected_feature == "Full Correlation Matrix":
+    # Full Correlation Matrix
+    st.subheader("Full Correlation Heatmap")
+    fig_full_heatmap = px.imshow(
+        full_correlation_matrix_df,
+        labels=dict(x="Features", y="Features", color="Correlation"),
+        x=full_correlation_matrix_df.columns,
+        y=full_correlation_matrix_df.columns,
+        title="Full Feature Correlation Matrix",
+        color_continuous_scale=colormap,
+        zmin=-1,
+        zmax=1,
+        width=800,
+        height=800
+    )
+    st.plotly_chart(fig_full_heatmap)
+else:
+    # Show correlations for the selected feature
+    selected_correlation = full_correlation_matrix_df[[selected_feature]].transpose()
+
+    # Interactive Heatmap for the selected feature
+    st.subheader(f"Correlation Heatmap for {selected_feature}")
+    fig_feature_heatmap = px.imshow(
+        selected_correlation,
+        labels=dict(x="Features", y=selected_feature, color="Correlation"),
+        x=full_correlation_matrix_df.columns,
+        y=[selected_feature],
+        title=f"Correlation Heatmap for {selected_feature}",
+        color_continuous_scale=colormap,
+        zmin=-1,
+        zmax=1,
+        width=800,
+        height=400
+    )
+    st.plotly_chart(fig_feature_heatmap)
 
 
 
