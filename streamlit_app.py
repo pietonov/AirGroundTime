@@ -5,7 +5,7 @@ import plotly.express as px
 # Load the summarized data
 @st.cache
 def load_data():
-    return pd.read_csv('OUTPUT/summarized_flight_data.csv')
+    return pd.read_csv('DATA/summarized_flight_data.csv')
 
 df = load_data()
 
