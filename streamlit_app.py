@@ -104,20 +104,20 @@ st.subheader("Log-Transformed Histogram of GROUND_TIME")
 # Add a slider for binning (interactive control)
 num_bins = st.slider("Select number of bins:", min_value=10, max_value=100, value=30)
 
-# Plot the histogram with the selected number of bins
-st.subheader("Interactive Histogram of GROUND_TIME (Log-Transformed)")
+# Re-aggregate bins dynamically based on user-selected bin count
+bin_step = max(1, len(histogram_summary) // num_bins)  # Determine how many bins to aggregate
+aggregated_bins = histogram_summary.groupby(histogram_summary.index // bin_step).agg({
+    'bin_edges': 'min',  # Use the left edge of the first bin in each aggregated group
+    'frequency': 'sum'   # Sum the frequencies of the bins being aggregated
+})
 
-# Recalculate the histogram with dynamic binning
-hist, bin_edges = np.histogram(histogram_summary['bin_edges'], bins=num_bins, weights=histogram_summary['frequency'])
-
-# Create the plot
+# Plot the dynamically aggregated histogram
 plt.figure(figsize=(10, 6))
-plt.bar(bin_edges[:-1], hist, width=np.diff(bin_edges), color='blue', alpha=0.7)
+plt.bar(aggregated_bins['bin_edges'], aggregated_bins['frequency'], width=np.diff(aggregated_bins['bin_edges'].append(pd.Series([aggregated_bins['bin_edges'].iloc[-1]+0.1]))), color='blue', alpha=0.7)
 plt.title('Log-Transformed Distribution of GROUND_TIME')
 plt.xlabel('Log(GROUND_TIME)')
 plt.ylabel('Frequency')
 st.pyplot()
-
 
 
 
