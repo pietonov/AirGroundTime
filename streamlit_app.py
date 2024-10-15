@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Load the summarized data
 def load_data():
@@ -10,8 +12,13 @@ def load_data():
 def load_correlation_matrix():
     return pd.read_csv('DATA/correlation_matrix.csv')
 
+# Load the histogram summary data for GROUND_TIME
+def load_histogram_summary():
+    return pd.read_csv('histogram_summary_ground_time.csv')
+
 df = load_data()
 full_correlation_matrix_df = load_correlation_matrix()
+histogram_summary = load_histogram_summary()
 
 # Streamlit App Title
 st.title("Flight Statistics Interactive Visualization")
@@ -46,14 +53,6 @@ st.subheader("Average Ground Time by Aircraft Configuration")
 bar_chart_data = filtered_df.groupby('AIRCRAFT_CONFIG_DESC').agg(average_ground_time=('average_ground_time', 'mean')).reset_index()
 fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_time', title='Average Ground Time by Aircraft Configuration')
 st.plotly_chart(fig_bar)
-
-
-
-
-
-
-
-
 
 # Dropdown for colormap selection
 colormap = st.selectbox("Select a colormap:", options=["RdBu_r", "gray", "Viridis", "Cividis", "Plasma", "Inferno", "Magma"])
@@ -98,6 +97,26 @@ else:
         height=400
     )
     st.plotly_chart(fig_feature_heatmap)
+
+# INTERACTIVE HISTOGRAM SECTION
+st.subheader("Log-Transformed Histogram of GROUND_TIME")
+
+# Add a slider for binning (interactive control)
+num_bins = st.slider("Select number of bins:", min_value=10, max_value=100, value=30)
+
+# Plot the histogram with the selected number of bins
+st.subheader("Interactive Histogram of GROUND_TIME (Log-Transformed)")
+
+# Recalculate the histogram with dynamic binning
+hist, bin_edges = np.histogram(histogram_summary['bin_edges'], bins=num_bins, weights=histogram_summary['frequency'])
+
+# Create the plot
+plt.figure(figsize=(10, 6))
+plt.bar(bin_edges[:-1], hist, width=np.diff(bin_edges), color='blue', alpha=0.7)
+plt.title('Log-Transformed Distribution of GROUND_TIME')
+plt.xlabel('Log(GROUND_TIME)')
+plt.ylabel('Frequency')
+st.pyplot()
 
 
 
