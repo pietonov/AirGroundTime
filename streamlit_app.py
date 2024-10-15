@@ -37,5 +37,3 @@ st.subheader("Average Ground Time by Aircraft Configuration")
 bar_chart_data = filtered_df.groupby('AIRCRAFT_CONFIG_DESC').agg(average_ground_time=('average_ground_time', 'mean')).reset_index()
 fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_time', title='Average Ground Time by Aircraft Configuration')
 st.plotly_chart(fig_bar)
-
-streamlit run app.py
