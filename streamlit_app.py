@@ -47,22 +47,29 @@ bar_chart_data = filtered_df.groupby('AIRCRAFT_CONFIG_DESC').agg(average_ground_
 fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_time', title='Average Ground Time by Aircraft Configuration')
 st.plotly_chart(fig_bar)
 
-# Interactive Heatmap for the Full Correlation Matrix
-st.subheader("Full Correlation Heatmap")
-fig_heatmap = px.imshow(
-    full_correlation_matrix_df,
-    labels=dict(x="Features", y="Features", color="Correlation"),
-    color_continuous_scale="RdBu_r",
+# Feature Selection for Correlation
+selected_feature = st.selectbox('Select a feature to view correlations:', full_correlation_matrix_df.columns)
+
+# Show correlations for the selected feature
+selected_correlation = full_correlation_matrix_df[[selected_feature]].transpose()
+
+# Interactive Heatmap for the selected feature
+st.subheader(f"Correlation Heatmap for {selected_feature}")
+fig_feature_heatmap = px.imshow(
+    selected_correlation,
+    labels=dict(x="Features", y=selected_feature, color="Correlation"),
     x=full_correlation_matrix_df.columns,
-    y=full_correlation_matrix_df.columns,
-    title="Full Feature Correlation Matrix",
+    y=[selected_feature],
+    title=f"Correlation Heatmap for {selected_feature}",
+    color_continuous_scale="RdBu",
     zmin=-1,
     zmax=1,
     width=800,
-    height=800 
+    height=400
 )
-fig_heatmap.update_layout(margin=dict(l=100, r=100, b=100, t=100))
-st.plotly_chart(fig_heatmap)
+
+# Show the heatmap for the selected feature
+st.plotly_chart(fig_feature_heatmap)
 
 
 
