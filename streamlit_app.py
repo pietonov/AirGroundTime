@@ -47,6 +47,25 @@ bar_chart_data = filtered_df.groupby('AIRCRAFT_CONFIG_DESC').agg(average_ground_
 fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_time', title='Average Ground Time by Aircraft Configuration')
 st.plotly_chart(fig_bar)
 
+
+# Full Correlation Matrix
+st.subheader("Full Correlation Heatmap")
+fig_full_heatmap = px.imshow(
+    full_correlation_matrix_df,
+    labels=dict(x="Features", y="Features", color="Correlation"),
+    x=full_correlation_matrix_df.columns,
+    y=full_correlation_matrix_df.columns,
+    title="Full Feature Correlation Matrix",
+    color_continuous_scale="RdBu",
+    zmin=-1,
+    zmax=1,
+    width=800,
+    height=800
+)
+
+# Show the full correlation heatmap
+st.plotly_chart(fig_full_heatmap)
+
 # Feature Selection for Correlation
 selected_feature = st.selectbox('Select a feature to view correlations:', full_correlation_matrix_df.columns)
 
