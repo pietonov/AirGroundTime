@@ -50,15 +50,15 @@ fig_bar = px.bar(bar_chart_data, x='AIRCRAFT_CONFIG_DESC', y='average_ground_tim
 st.plotly_chart(fig_bar)
 
 # Interactive Heatmap for the Full Correlation Matrix
-st.subheader("Full Correlation Heatmap")
-fig_heatmap = px.imshow(
-    full_correlation_matrix_df,
-    labels=dict(x="Features", y="Features", color="Correlation"),
-    x=full_correlation_matrix_df.columns,
-    y=full_correlation_matrix_df.columns,
-    title="Full Feature Correlation Matrix"
-)
-st.plotly_chart(fig_heatmap)
+# st.subheader("Full Correlation Heatmap")
+# fig_heatmap = px.imshow(
+#     full_correlation_matrix_df,
+#     labels=dict(x="Features", y="Features", color="Correlation"),
+#     x=full_correlation_matrix_df.columns,
+#     y=full_correlation_matrix_df.columns,
+#     title="Full Feature Correlation Matrix"
+# )
+# st.plotly_chart(fig_heatmap)
 
 
 
