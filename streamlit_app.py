@@ -117,6 +117,7 @@ This app visualizes flight statistics in United States. User can explore total n
 - **Select Year:** Use the sidebar to filter the data by year.
 - **Select Aircraft Configuration:** select the aircraft config in the sidebar.
 - **Interactive Charts:** User can hover on data point to see the detail, also can zoom in and out depend on usage.
+- **Heatmap:** Use dropdown to choose the colormap and the features that you want to focus on.
 
 ### Data Description
 - **YEAR:** Year of data
