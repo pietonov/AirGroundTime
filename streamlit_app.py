@@ -5,7 +5,7 @@ import plotly.express as px
 # Load the summarized data
 @st.cache
 def load_data():
-    return pd.read_csv('DATA/summarized_flight_data.csv')
+    return pd.read_csv('OUTPUT/summarized_flight_data.csv')
 
 df = load_data()
 
@@ -26,10 +26,15 @@ filtered_df = df[(df['YEAR'].isin(year_filter)) & (df['AIRCRAFT_CONFIG_DESC'].is
 # Display the filtered dataset
 st.dataframe(filtered_df)
 
-# Line chart: Total Flights Over Time
-st.subheader("Total Flights Over Time")
-line_chart_data = filtered_df.groupby('YEAR').agg(total_flights=('total_flights', 'sum')).reset_index()
-fig_line = px.line(line_chart_data, x='YEAR', y='total_flights', title='Total Flights Over Time')
+# Line chart: Total Flights Over Time, differentiated by Aircraft Configuration
+st.subheader("Total Flights Over Time by Aircraft Configuration")
+fig_line = px.line(
+    filtered_df, 
+    x='YEAR', 
+    y='total_flights', 
+    color='AIRCRAFT_CONFIG_DESC',  # Differentiate lines by aircraft config
+    title='Total Flights Over Time by Aircraft Configuration'
+)
 st.plotly_chart(fig_line)
 
 # Bar chart: Average Ground Time by Aircraft Configuration
