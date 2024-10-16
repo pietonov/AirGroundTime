@@ -116,7 +116,7 @@ bin_edges_extended = pd.concat([aggregated_bins['bin_edges'], pd.Series([aggrega
 
 # Plot the dynamically aggregated histogram
 plt.figure(figsize=(10, 6))
-plt.bar(aggregated_bins['bin_edges'], aggregated_bins['frequency'], width=np.diff(bin_edges_extended), color='blue', alpha=0.7)
+plt.bar(aggregated_bins['bin_edges'], aggregated_bins['frequency'], width=np.diff(bin_edges_extended), color='blue', alpha=0.7, edgecolor='black')
 plt.title('Log-Transformed Distribution of GROUND_TIME')
 plt.xlabel('Log(GROUND_TIME)')
 plt.ylabel('Frequency')
