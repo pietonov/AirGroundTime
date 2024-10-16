@@ -137,6 +137,9 @@ aircraft_config_selected = st.multiselect('Select Aircraft Configurations', df_b
 filtered_df = df_boxplot[(df_boxplot['YEAR'].isin(years_selected)) & 
                          (df_boxplot['AIRCRAFT_CONFIG_DESC'].isin(aircraft_config_selected))]
 
+# Add a checkbox to control whether to show outliers or not
+show_outliers = st.checkbox('Show Outliers', value=False)
+
 # Create and display the boxplot
 plt.figure(figsize=(12, 6))
 
@@ -149,7 +152,6 @@ plt.legend(loc='upper left', title='Aircraft Config')
 plt.xlabel('Year')
 plt.ylabel('Ground Time')
 st.pyplot(plt)
-
 
 
 
