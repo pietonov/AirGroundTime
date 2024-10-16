@@ -126,7 +126,7 @@ st.pyplot()
 
 
 # Read the CSV file into a DataFrame
-df_boxplot = pd.read_csv('boxplot_summary.csv')
+df_boxplot = pd.read_csv('DATA/boxplot_summary.csv')
 
 # Create select boxes for filtering by 'YEAR' and 'AIRCRAFT_CONFIG_DESC'
 year_selected = st.selectbox('Select Year', df_boxplot['YEAR'].unique())
