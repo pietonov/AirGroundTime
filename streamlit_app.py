@@ -62,7 +62,10 @@ full_correlation_matrix_df = load_correlation_matrix()
 histogram_summary = load_histogram_summary()
 
 # Streamlit App Title
-st.title("Flight Statistics Interactive Visualization")
+st.title("Flight Interactive Visualization")
+
+# INTERACTIVE QQ_PLOT SECTION
+st.subheader("Flight Statistics")
 
 # Sidebar Filters
 year_filter = st.sidebar.multiselect(
