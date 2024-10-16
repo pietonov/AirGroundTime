@@ -128,27 +128,26 @@ st.pyplot()
 # Read the CSV file into a DataFrame
 df_boxplot = pd.read_csv('DATA/boxplot_summary.csv')
 
-# Create select boxes for filtering by 'YEAR' and 'AIRCRAFT_CONFIG_DESC'
-year_selected = st.selectbox('Select Year', df_boxplot['YEAR'].unique())
-aircraft_config_selected = st.selectbox('Select Aircraft Configuration', df_boxplot['AIRCRAFT_CONFIG_DESC'].unique())
+# Create checkbox widgets for selecting years and aircraft configurations
+years_selected = st.multiselect('Select Years', df_boxplot['YEAR'].unique(), default=df_boxplot['YEAR'].unique())
+aircraft_config_selected = st.multiselect('Select Aircraft Configurations', df_boxplot['AIRCRAFT_CONFIG_DESC'].unique(), 
+                                          default=df_boxplot['AIRCRAFT_CONFIG_DESC'].unique())
 
 # Filter the DataFrame based on selections
-filtered_df = df_boxplot[(df_boxplot['YEAR'] == year_selected) & 
-                         (df_boxplot['AIRCRAFT_CONFIG_DESC'] == aircraft_config_selected)]
+filtered_df = df_boxplot[(df_boxplot['YEAR'].isin(years_selected)) & 
+                         (df_boxplot['AIRCRAFT_CONFIG_DESC'].isin(aircraft_config_selected))]
 
 # Create and display the boxplot
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(12, 6))
 
 sns.boxplot(x='YEAR', y='LOG_GROUND_TIME', hue='AIRCRAFT_CONFIG_DESC', data=filtered_df, showfliers=True)
 
 # Customize the plot
 plt.ylim(0, 15)
-plt.title(f'Boxplot of Log Ground Time for {year_selected}')
+plt.title('Boxplot of Log Ground Time by Year')
 plt.legend(loc='upper left', title='Aircraft Config')
 plt.xlabel('Year')
 plt.ylabel('Ground Time')
-y_min, y_max = st.slider('Y-axis Range', 0, 20, (0, 15))
-plt.ylim(y_min, y_max)
 st.pyplot(plt)
 
 
