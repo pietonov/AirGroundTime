@@ -164,6 +164,8 @@ plt.ylabel('Frequency')
 st.pyplot()
 
 
+# INTERACTIVE BOXPLOT SECTION
+st.subheader("Boxplot of LOG_GROUND_TIME")
 
 # Read the CSV file into a DataFrame
 df_boxplot = pd.read_csv('DATA/boxplot_summary.csv')
@@ -194,7 +196,8 @@ st.pyplot(plt)
 
 
 
-
+# INTERACTIVE QQ_PLOT SECTION
+st.subheader("QQ Plot of LOG_GROUND_TIME")
 
 # Read the CSV file into a DataFrame
 df_qqplot = pd.read_csv('DATA/qq_sample.csv')
