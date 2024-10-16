@@ -161,7 +161,8 @@ st.pyplot(plt)
 df_qqplot = pd.read_csv('DATA/qq_sample.csv')
 
 # Add checkboxes for selecting the distribution type
-distribution = st.selectbox('Select Distribution for QQ Plot', ['norm', 'expon', 'logistic', 't'])
+distribution = st.selectbox('Select Distribution for QQ Plot', 
+                            ['norm', 'expon', 'logistic', 'uniform', 'weibull_min', 'gamma', 'beta', 'pareto', 'laplace', 'chi2', 'gumbel_r', 'lognorm'])
 
 # Sample the log-transformed GROUND_TIME column from the dataframe
 log_ground_time_sampled = df_qqplot['LOG_GROUND_TIME']
