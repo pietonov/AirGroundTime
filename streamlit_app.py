@@ -130,22 +130,20 @@ df_boxplot = pd.read_csv('DATA/boxplot_summary.csv')
 
 # Create checkbox widgets for selecting years and aircraft configurations
 years_selected = st.multiselect('Select Years', df_boxplot['YEAR'].unique(), default=df_boxplot['YEAR'].unique())
-aircraft_config_selected = st.multiselect('Select Aircraft Configurations', df_boxplot['AIRCRAFT_CONFIG_DESC'].unique(), 
-                                          default=df_boxplot['AIRCRAFT_CONFIG_DESC'].unique())
 
-# Filter the DataFrame based on selections
+# Filter the DataFrame to include only "Freight Configuration" and "Passenger Configuration"
 filtered_df = df_boxplot[(df_boxplot['YEAR'].isin(years_selected)) & 
-                         (df_boxplot['AIRCRAFT_CONFIG_DESC'].isin(aircraft_config_selected))]
+                         (df_boxplot['AIRCRAFT_CONFIG_DESC'].isin(['Freight Configuration', 'Passenger Configuration']))]
 
 # Create and display the boxplot using summary data
 plt.figure(figsize=(12, 6))
 
 # Use showfliers=False to prevent displaying outliers
-sns.boxplot(x='YEAR', y='LOG_GROUND_TIME', hue='AIRCRAFT_CONFIG_DESC', data=filtered_df, showfliers=False)
+sns.boxplot(x='YEAR', y='LOG_GROUND_TIME', hue='AIRCRAFT_CONFIG_DESC', data=filtered_df)
 
 # Customize the plot
 plt.ylim(0, 15)
-plt.title('Boxplot of Log Ground Time by Year')
+plt.title('Boxplot of Log Ground Time by Year (Freight & Passenger)')
 plt.legend(loc='upper left', title='Aircraft Config')
 plt.xlabel('Year')
 plt.ylabel('Ground Time')
