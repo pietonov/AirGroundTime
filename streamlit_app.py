@@ -102,7 +102,7 @@ else:
 st.subheader("Log-Transformed Histogram of GROUND_TIME")
 
 # Add a slider for binning (interactive control)
-num_bins = st.slider("Select number of bins:", min_value=10, max_value=100, value=30)
+num_bins = st.slider("Select number of bins:", min_value=5, max_value=30, value=10)
 
 # Re-aggregate bins dynamically based on user-selected bin count
 bin_step = max(1, len(histogram_summary) // num_bins)  # Determine how many bins to aggregate
