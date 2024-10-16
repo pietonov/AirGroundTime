@@ -4,6 +4,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import scipy.stats as stats
 
 # Load the summarized data
 def load_data():
@@ -152,6 +153,28 @@ plt.xlabel('Year')
 plt.ylabel('Ground Time')
 st.pyplot(plt)
 
+
+
+
+
+# Read the CSV file into a DataFrame
+df_qqplot = pd.read_csv('DATA/qq_sample.csv')
+
+# Add checkboxes for selecting the distribution type
+distribution = st.selectbox('Select Distribution for QQ Plot', ['norm', 'expon', 'logistic', 't'])
+
+# Sample the log-transformed GROUND_TIME column from the dataframe
+log_ground_time_sampled = df_qqplot['LOG_GROUND_TIME']
+
+# Create a QQ plot using the sampled data for the selected distribution
+plt.figure(figsize=(8, 6))
+stats.probplot(log_ground_time_sampled, dist=distribution, plot=plt)
+plt.title(f"QQ Plot of Log-Transformed GROUND_TIME Against {distribution.capitalize()} Distribution")
+plt.xlabel('Theoretical Quantiles')
+plt.ylabel('Sample Quantiles')
+
+# Show the plot
+st.pyplot(plt)
 
 
 
