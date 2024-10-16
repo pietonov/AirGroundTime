@@ -1,220 +1,220 @@
 YEAR,AIRCRAFT_CONFIG_DESC,LOG_GROUND_TIME,Statistic
-2014,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2014,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2014,Combined Passenger and Freight on a main deck,2.1972245773362196,Q1
 2014,Combined Passenger and Freight on a main deck,3.091042453358316,median
 2014,Combined Passenger and Freight on a main deck,4.574710978503383,Q3
-2014,Combined Passenger and Freight on a main deck,7.842362237674335,upper_bound
-2014,Freight Configuration,0.7931471805599453,lower_bound
+2014,Combined Passenger and Freight on a main deck,8.042362237674334,upper_bound
+2014,Freight Configuration,0.5931471805599453,lower_bound
 2014,Freight Configuration,2.833213344056216,Q1
 2014,Freight Configuration,4.04305126783455,median
 2014,Freight Configuration,5.53338948872752,Q3
-2014,Freight Configuration,9.516405300156315,upper_bound
-2014,Passenger Configuration,0.7931471805599453,lower_bound
+2014,Freight Configuration,9.583653705734477,upper_bound
+2014,Passenger Configuration,0.5931471805599453,lower_bound
 2014,Passenger Configuration,3.258096538021482,Q1
 2014,Passenger Configuration,5.1298987149230735,median
 2014,Passenger Configuration,6.664409020350408,Q3
-2014,Passenger Configuration,10.524128297404996,upper_bound
-2014,Seaplane,0.7931471805599453,lower_bound
+2014,Passenger Configuration,10.724128297404995,upper_bound
+2014,Seaplane,0.5931471805599453,lower_bound
 2014,Seaplane,1.791759469228055,Q1
 2014,Seaplane,2.3978952727983707,median
 2014,Seaplane,3.4339872044851463,Q3
 2014,Seaplane,5.8973288073707835,upper_bound
-2015,Combined Passenger and Freight on a main deck,1.1986122886681099,lower_bound
+2015,Combined Passenger and Freight on a main deck,0.9986122886681098,lower_bound
 2015,Combined Passenger and Freight on a main deck,2.1972245773362196,Q1
 2015,Combined Passenger and Freight on a main deck,3.044522437723423,median
 2015,Combined Passenger and Freight on a main deck,4.465908118654584,Q3
 2015,Combined Passenger and Freight on a main deck,7.86893343063213,upper_bound
-2015,Freight Configuration,0.7931471805599453,lower_bound
+2015,Freight Configuration,0.5931471805599453,lower_bound
 2015,Freight Configuration,2.9444389791664403,Q1
 2015,Freight Configuration,4.219507705176107,median
 2015,Freight Configuration,5.58724865840025,Q3
-2015,Freight Configuration,8.14564690087386,upper_bound
-2015,Passenger Configuration,0.7931471805599453,lower_bound
+2015,Freight Configuration,8.34564690087386,upper_bound
+2015,Passenger Configuration,0.5931471805599453,lower_bound
 2015,Passenger Configuration,3.295836866004329,Q1
 2015,Passenger Configuration,5.1298987149230735,median
 2015,Passenger Configuration,6.650279048587422,Q3
-2015,Passenger Configuration,10.05541290527579,upper_bound
-2015,Seaplane,0.7931471805599453,lower_bound
+2015,Passenger Configuration,10.25541290527579,upper_bound
+2015,Seaplane,0.5931471805599453,lower_bound
 2015,Seaplane,1.6094379124341003,Q1
 2015,Seaplane,2.1972245773362196,median
 2015,Seaplane,3.258096538021482,Q3
 2015,Seaplane,5.731084476402555,upper_bound
-2016,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2016,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2016,Combined Passenger and Freight on a main deck,2.0794415416798357,Q1
 2016,Combined Passenger and Freight on a main deck,2.995732273553991,median
 2016,Combined Passenger and Freight on a main deck,4.574710978503383,Q3
-2016,Combined Passenger and Freight on a main deck,8.178174290943739,upper_bound
-2016,Freight Configuration,1.1986122886681099,lower_bound
+2016,Combined Passenger and Freight on a main deck,8.317615133738704,upper_bound
+2016,Freight Configuration,0.9986122886681098,lower_bound
 2016,Freight Configuration,2.9444389791664403,Q1
 2016,Freight Configuration,4.330733340286331,median
 2016,Freight Configuration,5.634789603169249,Q3
-2016,Freight Configuration,8.189790583181644,upper_bound
-2016,Passenger Configuration,0.7931471805599453,lower_bound
+2016,Freight Configuration,8.389790583181643,upper_bound
+2016,Passenger Configuration,0.5931471805599453,lower_bound
 2016,Passenger Configuration,3.367295829986474,Q1
 2016,Passenger Configuration,5.1298987149230735,median
 2016,Passenger Configuration,6.630683385642372,Q3
-2016,Passenger Configuration,9.798374503149306,upper_bound
-2016,Seaplane,0.7931471805599453,lower_bound
+2016,Passenger Configuration,9.998374503149305,upper_bound
+2016,Seaplane,0.5931471805599453,lower_bound
 2016,Seaplane,1.6094379124341003,Q1
 2016,Seaplane,2.1972245773362196,median
 2016,Seaplane,3.258096538021482,Q3
 2016,Seaplane,5.731084476402555,upper_bound
-2017,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2017,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2017,Combined Passenger and Freight on a main deck,1.9459101490553132,Q1
 2017,Combined Passenger and Freight on a main deck,2.772588722239781,median
 2017,Combined Passenger and Freight on a main deck,4.02535169073515,Q3
 2017,Combined Passenger and Freight on a main deck,7.144514003254904,upper_bound
-2017,Freight Configuration,0.7931471805599453,lower_bound
+2017,Freight Configuration,0.5931471805599453,lower_bound
 2017,Freight Configuration,2.995732273553991,Q1
 2017,Freight Configuration,4.3694478524670215,median
 2017,Freight Configuration,5.666426688112432,Q3
-2017,Freight Configuration,8.145909264774094,upper_bound
-2017,Passenger Configuration,0.7931471805599453,lower_bound
+2017,Freight Configuration,8.345909264774093,upper_bound
+2017,Passenger Configuration,0.5931471805599453,lower_bound
 2017,Passenger Configuration,3.4339872044851463,Q1
 2017,Passenger Configuration,5.278114659230517,median
 2017,Passenger Configuration,6.687108607866515,Q3
-2017,Passenger Configuration,9.772358017339208,upper_bound
-2017,Seaplane,0.7931471805599453,lower_bound
+2017,Passenger Configuration,9.972358017339207,upper_bound
+2017,Seaplane,0.5931471805599453,lower_bound
 2017,Seaplane,1.6094379124341003,Q1
 2017,Seaplane,2.1972245773362196,median
 2017,Seaplane,3.1354942159291497,Q3
 2017,Seaplane,5.424578671171724,upper_bound
-2018,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2018,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2018,Combined Passenger and Freight on a main deck,1.791759469228055,Q1
 2018,Combined Passenger and Freight on a main deck,2.6390573296152584,median
 2018,Combined Passenger and Freight on a main deck,3.784189633918261,Q3
 2018,Combined Passenger and Freight on a main deck,6.77283488095357,upper_bound
-2018,Freight Configuration,0.7931471805599453,lower_bound
+2018,Freight Configuration,0.5931471805599453,lower_bound
 2018,Freight Configuration,3.091042453358316,Q1
 2018,Freight Configuration,4.584967478670572,median
 2018,Freight Configuration,5.749392985908253,Q3
-2018,Freight Configuration,9.157033099968166,upper_bound
-2018,Passenger Configuration,0.7931471805599453,lower_bound
+2018,Freight Configuration,9.357033099968165,upper_bound
+2018,Passenger Configuration,0.5931471805599453,lower_bound
 2018,Passenger Configuration,3.5553480614894135,Q1
 2018,Passenger Configuration,5.402677381872279,median
 2018,Passenger Configuration,6.756932389247553,Q3
 2018,Passenger Configuration,11.559308880884764,upper_bound
-2018,Seaplane,0.7931471805599453,lower_bound
+2018,Seaplane,0.5931471805599453,lower_bound
 2018,Seaplane,1.6094379124341003,Q1
 2018,Seaplane,2.1972245773362196,median
 2018,Seaplane,3.2188758248682006,Q3
 2018,Seaplane,5.63303269351935,upper_bound
-2019,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2019,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2019,Combined Passenger and Freight on a main deck,1.9459101490553132,Q1
 2019,Combined Passenger and Freight on a main deck,2.70805020110221,median
 2019,Combined Passenger and Freight on a main deck,3.8501476017100584,Q3
 2019,Combined Passenger and Freight on a main deck,6.706503780692176,upper_bound
-2019,Freight Configuration,0.7931471805599453,lower_bound
+2019,Freight Configuration,0.5931471805599453,lower_bound
 2019,Freight Configuration,3.1780538303479458,Q1
 2019,Freight Configuration,4.727387818712341,median
 2019,Freight Configuration,5.805134968916488,Q3
-2019,Freight Configuration,9.307796816354408,upper_bound
-2019,Passenger Configuration,0.7931471805599453,lower_bound
+2019,Freight Configuration,9.507796816354407,upper_bound
+2019,Passenger Configuration,0.5931471805599453,lower_bound
 2019,Passenger Configuration,3.58351893845611,Q1
 2019,Passenger Configuration,5.375278407684165,median
 2019,Passenger Configuration,6.739336627357174,Q3
-2019,Passenger Configuration,9.685154365574263,upper_bound
-2019,Seaplane,0.7931471805599453,lower_bound
+2019,Passenger Configuration,9.885154365574262,upper_bound
+2019,Seaplane,0.5931471805599453,lower_bound
 2019,Seaplane,1.6094379124341003,Q1
 2019,Seaplane,2.3978952727983707,median
 2019,Seaplane,3.4339872044851463,Q3
 2019,Seaplane,6.170811142561716,upper_bound
-2020,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2020,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2020,Combined Passenger and Freight on a main deck,1.6094379124341003,Q1
 2020,Combined Passenger and Freight on a main deck,2.3978952727983707,median
 2020,Combined Passenger and Freight on a main deck,3.4339872044851463,Q3
 2020,Combined Passenger and Freight on a main deck,6.170811142561716,upper_bound
-2020,Freight Configuration,0.7931471805599453,lower_bound
+2020,Freight Configuration,0.5931471805599453,lower_bound
 2020,Freight Configuration,3.1354942159291497,Q1
 2020,Freight Configuration,4.624972813284271,median
 2020,Freight Configuration,5.752572638825633,Q3
 2020,Freight Configuration,9.678190273170358,upper_bound
-2020,Passenger Configuration,0.7931471805599453,lower_bound
+2020,Passenger Configuration,0.5931471805599453,lower_bound
 2020,Passenger Configuration,3.4011973816621555,Q1
 2020,Passenger Configuration,5.075173815233827,median
 2020,Passenger Configuration,6.470799503782602,Q3
-2020,Passenger Configuration,9.612084887005981,upper_bound
-2020,Seaplane,0.7931471805599453,lower_bound
+2020,Passenger Configuration,9.81208488700598,upper_bound
+2020,Seaplane,0.5931471805599453,lower_bound
 2020,Seaplane,1.791759469228055,Q1
 2020,Seaplane,2.3978952727983707,median
 2020,Seaplane,3.2188758248682006,Q3
 2020,Seaplane,5.359550358328419,upper_bound
-2021,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2021,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2021,Combined Passenger and Freight on a main deck,1.6094379124341003,Q1
 2021,Combined Passenger and Freight on a main deck,2.302585092994046,median
 2021,Combined Passenger and Freight on a main deck,3.4965075614664802,Q3
 2021,Combined Passenger and Freight on a main deck,6.32711203501505,upper_bound
-2021,Freight Configuration,0.7931471805599453,lower_bound
+2021,Freight Configuration,0.5931471805599453,lower_bound
 2021,Freight Configuration,3.2188758248682006,Q1
 2021,Freight Configuration,4.718498871295094,median
 2021,Freight Configuration,5.802118375377063,Q3
-2021,Freight Configuration,8.675085935057266,upper_bound
-2021,Passenger Configuration,0.7931471805599453,lower_bound
+2021,Freight Configuration,8.875085935057266,upper_bound
+2021,Passenger Configuration,0.5931471805599453,lower_bound
 2021,Passenger Configuration,3.332204510175204,Q1
 2021,Passenger Configuration,4.976733742420574,median
 2021,Passenger Configuration,6.498282149476434,Q3
-2021,Passenger Configuration,11.235675028284078,upper_bound
-2021,Seaplane,0.7931471805599453,lower_bound
+2021,Passenger Configuration,11.247398608428277,upper_bound
+2021,Seaplane,0.5931471805599453,lower_bound
 2021,Seaplane,1.791759469228055,Q1
 2021,Seaplane,2.3978952727983707,median
 2021,Seaplane,3.258096538021482,Q3
 2021,Seaplane,5.457602141211623,upper_bound
-2022,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2022,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2022,Combined Passenger and Freight on a main deck,1.6094379124341003,Q1
 2022,Combined Passenger and Freight on a main deck,2.302585092994046,median
 2022,Combined Passenger and Freight on a main deck,3.4965075614664802,Q3
 2022,Combined Passenger and Freight on a main deck,6.32711203501505,upper_bound
-2022,Freight Configuration,0.7931471805599453,lower_bound
+2022,Freight Configuration,0.5931471805599453,lower_bound
 2022,Freight Configuration,3.2188758248682006,Q1
 2022,Freight Configuration,4.762173934797756,median
 2022,Freight Configuration,5.8664680569332965,Q3
-2022,Freight Configuration,8.604502289721232,upper_bound
-2022,Passenger Configuration,0.7931471805599453,lower_bound
+2022,Freight Configuration,8.804502289721231,upper_bound
+2022,Passenger Configuration,0.5931471805599453,lower_bound
 2022,Passenger Configuration,3.4339872044851463,Q1
 2022,Passenger Configuration,5.003946305945459,median
 2022,Passenger Configuration,6.523562306149512,Q3
-2022,Passenger Configuration,10.940887768411498,upper_bound
-2022,Seaplane,0.7931471805599453,lower_bound
+2022,Passenger Configuration,11.140887768411497,upper_bound
+2022,Seaplane,0.5931471805599453,lower_bound
 2022,Seaplane,1.9459101490553132,Q1
 2022,Seaplane,2.5649493574615367,median
 2022,Seaplane,3.5553480614894135,Q3
 2022,Seaplane,5.969504930140564,upper_bound
-2023,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2023,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2023,Combined Passenger and Freight on a main deck,1.6094379124341003,Q1
 2023,Combined Passenger and Freight on a main deck,2.4849066497880004,median
 2023,Combined Passenger and Freight on a main deck,3.713572066704308,Q3
 2023,Combined Passenger and Freight on a main deck,6.869773298109619,upper_bound
-2023,Freight Configuration,0.7931471805599453,lower_bound
+2023,Freight Configuration,0.5931471805599453,lower_bound
 2023,Freight Configuration,3.258096538021482,Q1
 2023,Freight Configuration,4.795790545596741,median
 2023,Freight Configuration,5.883322388488279,Q3
 2023,Freight Configuration,9.821161164188474,upper_bound
-2023,Passenger Configuration,0.7931471805599453,lower_bound
+2023,Passenger Configuration,0.5931471805599453,lower_bound
 2023,Passenger Configuration,3.4965075614664802,Q1
 2023,Passenger Configuration,5.1298987149230735,median
 2023,Passenger Configuration,6.53813982376767,Q3
 2023,Passenger Configuration,11.100588217219455,upper_bound
-2023,Seaplane,0.7931471805599453,lower_bound
+2023,Seaplane,0.5931471805599453,lower_bound
 2023,Seaplane,1.791759469228055,Q1
 2023,Seaplane,2.3978952727983707,median
 2023,Seaplane,3.4339872044851463,Q3
 2023,Seaplane,5.8973288073707835,upper_bound
-2024,Combined Passenger and Freight on a main deck,0.7931471805599453,lower_bound
+2024,Combined Passenger and Freight on a main deck,0.5931471805599453,lower_bound
 2024,Combined Passenger and Freight on a main deck,1.6094379124341003,Q1
 2024,Combined Passenger and Freight on a main deck,2.4849066497880004,median
 2024,Combined Passenger and Freight on a main deck,3.713572066704308,Q3
-2024,Combined Passenger and Freight on a main deck,5.989044875446846,upper_bound
-2024,Freight Configuration,0.7931471805599453,lower_bound
+2024,Combined Passenger and Freight on a main deck,6.189044875446846,upper_bound
+2024,Freight Configuration,0.5931471805599453,lower_bound
 2024,Freight Configuration,3.044522437723423,Q1
 2024,Freight Configuration,4.1588830833596715,median
 2024,Freight Configuration,5.4638318050256105,Q3
-2024,Freight Configuration,8.613417653379184,upper_bound
-2024,Passenger Configuration,0.7931471805599453,lower_bound
+2024,Freight Configuration,8.813417653379183,upper_bound
+2024,Passenger Configuration,0.5931471805599453,lower_bound
 2024,Passenger Configuration,3.1354942159291497,Q1
 2024,Passenger Configuration,4.04305126783455,median
 2024,Passenger Configuration,5.10594547390058,Q3
 2024,Passenger Configuration,8.061622360857726,upper_bound
-2024,Seaplane,0.7931471805599453,lower_bound
+2024,Seaplane,0.5931471805599453,lower_bound
 2024,Seaplane,1.9459101490553132,Q1
 2024,Seaplane,2.772588722239781,median
 2024,Seaplane,3.5553480614894135,Q3
