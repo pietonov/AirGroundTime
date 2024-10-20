@@ -145,6 +145,9 @@ else:
 
 # INTERACTIVE HISTOGRAM SECTION
 st.subheader("Log-Transformed Histogram of GROUND_TIME")
+st.markdown("""
+The Ground Time is calculated by assuming that RAMP-TO-RAMP = AIR_TIME + GROUND_TIME
+""")
 
 # Add a slider for binning (interactive control)
 num_bins = st.slider("Select number of bins:", min_value=5, max_value=30, value=10)
@@ -170,6 +173,9 @@ st.pyplot()
 
 # INTERACTIVE BOXPLOT SECTION
 st.subheader("Boxplot of LOG_GROUND_TIME")
+st.markdown("""
+The groundtime is tend to be stable overtime, however there is indication of cycle effect for the Q1, which impact the IQR and whiskers, which open potential for Time-Series Analysis.
+""")
 
 # Read the CSV file into a DataFrame
 df_boxplot = pd.read_csv('DATA/boxplot_summary.csv')
@@ -202,6 +208,9 @@ st.pyplot(plt)
 
 # INTERACTIVE QQ_PLOT SECTION
 st.subheader("QQ Plot of LOG_GROUND_TIME")
+st.markdown("""
+The QQ Plot does not match for any distribution. Refering to histogram there is 2 local maxima, thus a segmentation on the data might be required. There might be a hidden classification that can be explored and utilized.
+""")
 
 # Read the CSV file into a DataFrame
 df_qqplot = pd.read_csv('DATA/qq_sample.csv')
