@@ -7,4 +7,4 @@ https://cmse830-midterm-h6xxpfxymyaf8dmaq5esbs.streamlit.app/
 
 Version history  
 
-v0.1 | Deployment
+v0.1  Deployment
