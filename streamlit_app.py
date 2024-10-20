@@ -146,6 +146,8 @@ else:
 # INTERACTIVE HISTOGRAM SECTION
 st.subheader("Log-Transformed Histogram of GROUND_TIME")
 st.markdown("""
+Ground time is transformed into log for better visualization and analysis, due to long-tail.
+            
 The Ground Time is calculated by assuming that RAMP-TO-RAMP = AIR_TIME + GROUND_TIME
 """)
 
