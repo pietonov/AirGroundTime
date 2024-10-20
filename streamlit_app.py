@@ -67,13 +67,14 @@ st.title("Flight Interactive Visualization")
 # INTERACTIVE QQ_PLOT SECTION
 st.subheader("Flight Statistics")
 
-# Sidebar Filters
-year_filter = st.sidebar.multiselect(
+# Filters
+year_filter = st.multiselect(
     "Select Year(s)", options=df['YEAR'].unique(), default=df['YEAR'].unique()
 )
-aircraft_filter = st.sidebar.multiselect(
+aircraft_filter = st.multiselect(
     "Select Aircraft Configuration(s)", options=df['AIRCRAFT_CONFIG_DESC'].unique(), default=df['AIRCRAFT_CONFIG_DESC'].unique()
 )
+
 
 # Filtered Data
 filtered_df = df[(df['YEAR'].isin(year_filter)) & (df['AIRCRAFT_CONFIG_DESC'].isin(aircraft_filter))]
