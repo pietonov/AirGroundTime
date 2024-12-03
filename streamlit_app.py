@@ -237,6 +237,45 @@ st.pyplot(plt)
 
 
 
+# Create a DataFrame to store the results of the drop test
+data = {
+    "Dropped Variable": [
+        "Full Model (GLM Full)",
+        "Drop `UNIQUE_CARRIER`",
+        "Drop `DISTANCE`",
+        "Drop `LARGE_AIRPORT`",
+        "Drop `PASSENGERS`",
+        "Drop `IS_WINTER`"
+    ],
+    "Weighted RMSE": [20.0089, 20.1158, 20.0085, 20.0133, 20.0246, 20.0164],
+    "Unweighted RMSE": [94.1800, 94.3295, 94.1891, 94.1909, 94.2371, 94.1860],
+    "Difference from Full (Weighted)": [0.0000, 0.1069, -0.0004, 0.0044, 0.0157, 0.0075],
+    "Difference from Full (Unweighted)": [0.0000, 0.1495, 0.0091, 0.0109, 0.0571, 0.0060]
+}
+
+df_drop_test = pd.DataFrame(data)
+
+# Streamlit app
+st.title("Drop Test Results")
+
+st.write(
+    """
+    Based on the drop test results, we analyze the impact of dropping each variable on RMSEs (Weighted and Unweighted).
+    """
+)
+
+# Display the table
+st.dataframe(df_drop_test)
+
+# Summary of findings
+st.subheader("Summary of Findings")
+st.write(
+    """
+    - Retain all variables since removing any of them results in noticeable higher RMSEs.
+    - For `DISTANCE`, it has no significant impact; thus, we will keep it.
+    """
+)
+
 
 
 
