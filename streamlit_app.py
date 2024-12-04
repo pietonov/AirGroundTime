@@ -24,10 +24,6 @@ def load_models():
 
 glm_full, rf = load_models()
 
-# Extract expected exogenous variable names from the GLM model
-expected_exog = glm_full.model.exog_names
-st.write("Expected Variables by GLM Model:", expected_exog)
-
 
 
 
