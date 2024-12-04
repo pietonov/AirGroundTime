@@ -329,8 +329,3 @@ st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
 rf_pred = rf.predict(input_df_encoded)
 st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
 
-st.write(
-    """
-    test
-    """
-)
