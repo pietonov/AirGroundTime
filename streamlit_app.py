@@ -279,29 +279,55 @@ elif section == "Data Exploratory":
 elif section == "Prediction Apps":
     ######################### Prediction Apps ###############################
     st.title("Predict Ground Time")
-    
+
     # User Input Form on the main page
     st.header("Input Flight Details")
+
     distance = st.number_input("Distance (miles):", min_value=0, value=500)
-    large_airport = st.selectbox("Large Airport:", [0, 1], index=1, format_func=lambda x: 'Yes' if x else 'No')
-    has_passengers = st.selectbox("Has Passengers:", [0, 1], index=1, format_func=lambda x: 'Yes' if x else 'No')
-    passengers = st.number_input("Number of Passengers:", min_value=0, value=150)
-    is_winter = st.selectbox("Winter Season:", [0, 1], index=0, format_func=lambda x: 'Yes' if x else 'No')
+
+    large_airport = st.selectbox(
+        "Large Airport:",
+        [1, 0],
+        index=0,
+        format_func=lambda x: 'Yes' if x else 'No'
+    )
+
+    has_passengers = st.selectbox(
+        "Has Passengers:",
+        [1, 0],
+        index=0,
+        format_func=lambda x: 'Yes' if x else 'No'
+    )
+
+    # Conditionally display the 'Number of Passengers' input
+    if has_passengers == 1:
+        passengers = st.number_input("Number of Passengers:", min_value=1, value=150)
+    else:
+        passengers = 0
+        st.write("Number of Passengers: 0 (No passengers)")
+
+    is_winter = st.selectbox(
+        "Winter Season:",
+        [1, 0],
+        index=1,
+        format_func=lambda x: 'Yes' if x else 'No'
+    )
+
     unique_carrier = st.selectbox(
-        "Unique Carrier:", 
+        "Unique Carrier:",
         options=[
             'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
             'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
         ]
     )
-    
+
     # Map any unknown carrier to 'Other'
     if unique_carrier not in [
         'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
         'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
     ]:
         unique_carrier = 'Other'
-    
+
     # Create a DataFrame for input
     input_data = {
         'DISTANCE': [distance],
@@ -312,15 +338,15 @@ elif section == "Prediction Apps":
         'UNIQUE_CARRIER': [unique_carrier]
     }
     input_df = pd.DataFrame(input_data)
-    
+
     # For GLM Prediction
     glm_input_df = input_df.copy()
-    
+
     # For Random Forest Prediction
     rf_input_df = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'])
     expected_feature_names = rf.feature_names_in_
     rf_input_df = rf_input_df.reindex(columns=expected_feature_names, fill_value=0)
-    
+
     # Prediction Button
     if st.button("Predict Ground Time"):
         # GLM Prediction
@@ -336,3 +362,4 @@ elif section == "Prediction Apps":
             st.success(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
         except Exception as e:
             st.error(f"An error occurred during Random Forest prediction: {e}")
+
