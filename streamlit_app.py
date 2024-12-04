@@ -24,6 +24,10 @@ def load_models():
 
 glm_full, rf = load_models()
 
+# Extract expected exogenous variable names from the GLM model
+expected_exog = glm_full.model.exog_names
+st.write("Expected Variables by GLM Model:", expected_exog)
+
 
 
 
@@ -293,11 +297,12 @@ st.write(
 
 
 
-
 ######################### Prediction Section ###############################
 
-# Load the training data (optional if not needed elsewhere)
-# train_data = pd.read_csv('DATA/train_data.csv')  # Not necessary for alignment
+
+# Load the training data
+train_data = pd.read_csv('DATA/train_data.csv')  # Adjust the path as necessary
+
 
 st.title("Predict Ground Time")
 
@@ -329,31 +334,13 @@ input_df = pd.DataFrame(input_data)
 
 # Preprocess the input data
 input_df_encoded = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
-
-# Extract expected exogenous variable names from the GLM model
-expected_exog = glm_full.model.exog_names
-
-# Add 'Intercept' if expected
-if 'Intercept' in expected_exog:
-    input_df_encoded['Intercept'] = 1
-
-# Reindex to match the model's expected exogenous variables
-input_df_encoded = input_df_encoded.reindex(columns=expected_exog, fill_value=0)
-
-# Display the processed input data for debugging
-st.write("Processed Input Data for Prediction:")
-st.dataframe(input_df_encoded)
+input_df_encoded = input_df_encoded.reindex(columns=train_data.columns, fill_value=0)
 
 # GLM Prediction
-try:
-    glm_pred = glm_full.predict(input_df_encoded)
-    st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
-except Exception as e:
-    st.error(f"An error occurred during GLM prediction: {e}")
+glm_pred = glm_full.predict(input_df_encoded)
+st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
 
 # Random Forest Prediction
-try:
-    rf_pred = rf.predict(input_df_encoded)
-    st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
-except Exception as e:
-    st.error(f"An error occurred during Random Forest prediction: {e}")
+rf_pred = rf.predict(input_df_encoded)
+st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
+
