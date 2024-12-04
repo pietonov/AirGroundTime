@@ -1,6 +1,5 @@
 ######################### Import ##############################
 import streamlit as st
-from streamlit_option_menu import option_menu
 import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -36,18 +35,23 @@ def load_models():
 glm_full, rf = load_models()
 
 ######################### Sidebar Navigation ##################
-with st.sidebar:
-    section = option_menu(
-        "Navigation",
-        ["Docs", "Data Exploratory", "Prediction Apps"],
-        icons=["book", "bar-chart", "calculator"],  # Customize as needed
-        menu_icon="menu",
-        default_index=0,
-    )
+st.sidebar.title("Navigation")
+
+# Initialize a session state for navigation
+if "section" not in st.session_state:
+    st.session_state["section"] = "Docs"
+
+# Navigation Buttons
+if st.sidebar.button("Docs"):
+    st.session_state["section"] = "Docs"
+if st.sidebar.button("Data Exploratory"):
+    st.session_state["section"] = "Data Exploratory"
+if st.sidebar.button("Prediction Apps"):
+    st.session_state["section"] = "Prediction Apps"
 
 ######################### Sections ############################
 
-if section == "Docs":
+if st.session_state["section"] == "Docs":
     ######################### Docs ############################
     st.title("Flight Statistics Interactive Documentation")
     st.markdown("""
@@ -68,7 +72,7 @@ if section == "Docs":
     - **average_ground_time:** The average ground time.
     """)
 
-elif section == "Data Exploratory":
+elif st.session_state["section"] == "Data Exploratory":
     ######################### Data Exploratory ################
     st.title("Flight Interactive Visualization")
     st.subheader("Flight Statistics")
@@ -108,7 +112,7 @@ elif section == "Data Exploratory":
     )
     st.plotly_chart(fig_bar)
 
-elif section == "Prediction Apps":
+elif st.session_state["section"] == "Prediction Apps":
     ######################### Prediction Apps #################
     st.title("Predict Ground Time")
 
