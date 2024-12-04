@@ -6,11 +6,34 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import scipy.stats as stats
+import joblib  # Import joblib for loading models
+import os
 
+# Load the GLM and RF models from the DATA folder
+@st.cache_resource  # Cache the models to avoid reloading on every app refresh
+def load_models():
+    try:
+        glm_path = 'DATA/glm_model.pkl'
+        rf_path = 'DATA/rf.pkl'
+        if not os.path.exists(glm_path):
+            st.error(f"Model file not found: {glm_path}")
+            raise FileNotFoundError(f"{glm_path} does not exist.")
+        if not os.path.exists(rf_path):
+            st.error(f"Model file not found: {rf_path}")
+            raise FileNotFoundError(f"{rf_path} does not exist.")
+        
+        glm_model = joblib.load(glm_path)
+        rf_model = joblib.load(rf_path)
+    except ModuleNotFoundError as e:
+        st.error(f"Module not found: {e}. Ensure the required libraries are installed.")
+        raise
+    except Exception as e:
+        st.error(f"An error occurred while loading models: {e}")
+        raise
+    return glm_model, rf_model
 
-
-
-
+# Call the load_models function and assign models to variables
+glm_full, rf = load_models()
 
 ######################### Docs ###############################
 
@@ -38,12 +61,7 @@ Code was generated with the assistance of GPT-4, incorporating student input, re
 - **average_ground_time:** The average ground time.
 """)
 
-
-
-
 ######################### Code ###############################
-
-
 
 # Load the summarized data
 def load_data():
@@ -74,7 +92,6 @@ year_filter = st.multiselect(
 aircraft_filter = st.multiselect(
     "Select Aircraft Configuration(s)", options=df['AIRCRAFT_CONFIG_DESC'].unique(), default=df['AIRCRAFT_CONFIG_DESC'].unique()
 )
-
 
 # Filtered Data
 filtered_df = df[(df['YEAR'].isin(year_filter)) & (df['AIRCRAFT_CONFIG_DESC'].isin(aircraft_filter))]
@@ -172,7 +189,6 @@ plt.xlabel('Log(GROUND_TIME)')
 plt.ylabel('Frequency')
 st.pyplot()
 
-
 # INTERACTIVE BOXPLOT SECTION
 st.subheader("Boxplot of LOG_GROUND_TIME")
 st.markdown("""
@@ -206,8 +222,6 @@ plt.xlabel('Year')
 plt.ylabel('Ground Time')
 st.pyplot(plt)
 
-
-
 # INTERACTIVE QQ_PLOT SECTION
 st.subheader("QQ Plot of LOG_GROUND_TIME")
 st.markdown("""
@@ -233,16 +247,6 @@ plt.ylabel('Sample Quantiles')
 
 # Show the plot
 st.pyplot(plt)
-
-
-
-
-
-
-
-
-
-
 
 # Create a DataFrame to store the results of the drop test
 data = {
@@ -282,3 +286,74 @@ st.write(
     - For `DISTANCE`, it has no significant impact; thus, we will keep it.
     """
 )
+
+######################### Prediction Section ###############################
+
+st.title("Predict Ground Time")
+
+# User Input Form
+st.sidebar.header("Input Flight Details")
+distance = st.sidebar.number_input("Distance (miles):", min_value=0, value=500)
+large_airport = st.sidebar.selectbox("Large Airport:", [0, 1], index=1)  # 0: No, 1: Yes
+has_passengers = st.sidebar.selectbox("Has Passengers:", [0, 1], index=1)  # 0: No, 1: Yes
+passengers = st.sidebar.number_input("Number of Passengers:", min_value=0, value=150)
+is_winter = st.sidebar.selectbox("Winter Season:", [0, 1], index=0)  # 0: No, 1: Yes
+unique_carrier = st.sidebar.selectbox(
+    "Unique Carrier:", 
+    options=[
+        'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
+        'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
+    ]
+)
+
+# Define all possible unique carriers based on training
+all_unique_carriers = [
+    'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
+    'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
+]
+
+# Map any unknown carrier to 'Other' (if applicable)
+if unique_carrier not in all_unique_carriers:
+    unique_carrier = 'Other'
+
+# Create a DataFrame for input
+input_data = {
+    'DISTANCE': [distance],
+    'LARGE_AIRPORT': [large_airport],
+    'HAS_PASSENGERS': [has_passengers],
+    'PASSENGERS': [passengers],
+    'IS_WINTER': [is_winter],
+    'UNIQUE_CARRIER': [unique_carrier]
+}
+input_df = pd.DataFrame(input_data)
+
+# Preprocess the input data
+input_df_encoded = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
+
+# Extract expected exogenous variable names from the GLM model
+expected_exog = glm_full.model.exog_names
+
+# Add 'Intercept' if expected
+if 'Intercept' in expected_exog:
+    input_df_encoded['Intercept'] = 1
+
+# Reindex to match the model's expected exogenous variables
+input_df_encoded = input_df_encoded.reindex(columns=expected_exog, fill_value=0)
+
+# Display the processed input data for debugging
+st.write("Processed Input Data for Prediction:")
+st.dataframe(input_df_encoded)
+
+# GLM Prediction
+try:
+    glm_pred = glm_full.predict(input_df_encoded)
+    st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
+except Exception as e:
+    st.error(f"An error occurred during GLM prediction: {e}")
+
+# Random Forest Prediction
+try:
+    rf_pred = rf.predict(input_df_encoded)
+    st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
+except Exception as e:
+    st.error(f"An error occurred during Random Forest prediction: {e}")
