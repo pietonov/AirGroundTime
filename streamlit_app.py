@@ -22,6 +22,7 @@ def load_models():
         raise
     return glm_model, rf_model
 
+glm_full, rf = load_models()
 
 
 
@@ -294,6 +295,11 @@ st.write(
 
 
 ######################### Prediction Section ###############################
+
+
+# Load the training data
+train_data = pd.read_csv('DATA/train_data.csv')  # Adjust the path as necessary
+
 
 st.title("Predict Ground Time")
 
