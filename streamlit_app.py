@@ -327,33 +327,43 @@ input_data = {
 }
 input_df = pd.DataFrame(input_data)
 
-# Preprocess the input data
-input_df_encoded = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
+# For GLM Prediction (Formula API handles categorical variables)
+glm_input_df = input_df.copy()
 
-# Extract expected exogenous variable names from the GLM model
-expected_exog = glm_full.model.exog_names
+# For Random Forest Prediction (Manually encode categorical variables)
+rf_input_df = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
 
-# Add 'Intercept' if expected
-if 'Intercept' in expected_exog:
-    input_df_encoded['Intercept'] = 1
+# Define the expected dummy columns based on training
+expected_dummy_cols = [
+    'UNIQUE_CARRIER_American Airlines Inc.',
+    'UNIQUE_CARRIER_Chautauqua Airlines Inc.',
+    'UNIQUE_CARRIER_Compass Airlines',
+    'UNIQUE_CARRIER_Delta Air Lines Inc.',
+    'UNIQUE_CARRIER_Endeavor Air Inc.',
+    'UNIQUE_CARRIER_Other',
+    # Add all other unique carriers used during training
+]
 
-# Reindex to match the model's expected exogenous variables
-input_df_encoded = input_df_encoded.reindex(columns=expected_exog, fill_value=0)
+# Reindex rf_input_df to include all expected dummy columns
+rf_input_df = rf_input_df.reindex(columns=expected_dummy_cols, fill_value=0)
 
 # Display the processed input data for debugging
-st.write("Processed Input Data for Prediction:")
-st.dataframe(input_df_encoded)
+st.write("**Processed Input Data for GLM Prediction:**")
+st.dataframe(glm_input_df)
+
+st.write("**Processed Input Data for Random Forest Prediction:**")
+st.dataframe(rf_input_df)
 
 # GLM Prediction
 try:
-    glm_pred = glm_full.predict(input_df_encoded)
+    glm_pred = glm_full.predict(glm_input_df)
     st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
 except Exception as e:
     st.error(f"An error occurred during GLM prediction: {e}")
 
 # Random Forest Prediction
 try:
-    rf_pred = rf.predict(input_df_encoded)
+    rf_pred = rf.predict(rf_input_df)
     st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
 except Exception as e:
     st.error(f"An error occurred during Random Forest prediction: {e}")
