@@ -1,8 +1,9 @@
 streamlit
 pandas
-matplotlib
-seaborn
-numpy
 plotly
+matplotlib
+numpy
+seaborn
 scipy
 joblib
+statsmodels
