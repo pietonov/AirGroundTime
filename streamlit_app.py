@@ -11,11 +11,17 @@ import joblib  # Import joblib for loading models
 # Load the GLM and RF models from the DATA folder
 @st.cache_resource  # Cache the models to avoid reloading on every app refresh
 def load_models():
-    glm_model = joblib.load('DATA/glm_model.pkl')
-    rf_model = joblib.load('DATA/rf.pkl')
+    try:
+        glm_model = joblib.load('DATA/glm_model.pkl')
+        rf_model = joblib.load('DATA/rf.pkl')
+    except ModuleNotFoundError as e:
+        st.error(f"Module not found: {e}. Ensure the required libraries are installed.")
+        raise
+    except Exception as e:
+        st.error(f"An error occurred while loading models: {e}")
+        raise
     return glm_model, rf_model
 
-glm_full, rf = load_models()
 
 
 
