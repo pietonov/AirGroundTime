@@ -1,9 +1,6 @@
-# CMSE830-midterm
+# Air Ground Time Prediction
 
-This mid-term project is intended to analyze the ground-time for aircraft, potentially helping either passenger or freight aircraft.
-
-There is no need to setup, just run the code in the jupyter and required data. The streamlit_app.py linked to streamlit.
-https://cmse830-midterm-h6xxpfxymyaf8dmaq5esbs.streamlit.app/
+ATPA exercise, but using Python. Also used for CMSE 830 project. Airport changed from Boise to Detroit.
 
 Version history  
 
