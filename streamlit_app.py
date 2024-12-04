@@ -9,7 +9,7 @@ import scipy.stats as stats
 import joblib  # Import joblib for loading models
 
 # Load the GLM and RF models from the DATA folder
-@st.cache_resource  # Cache the models to avoid reloading on every app refresh
+@st.cache_resource
 def load_models():
     try:
         glm_model = joblib.load('DATA/glm_model.pkl')
@@ -24,6 +24,9 @@ def load_models():
 
 glm_full, rf = load_models()
 
+# Extract expected exogenous variable names from the GLM model
+expected_exog = glm_full.model.exog_names
+st.write("Expected Variables by GLM Model:", expected_exog)
 
 
 
@@ -294,12 +297,11 @@ st.write(
 
 
 
+
 ######################### Prediction Section ###############################
 
-
-# Load the training data
-train_data = pd.read_csv('DATA/train_data.csv')  # Adjust the path as necessary
-
+# Load the training data (optional if not needed elsewhere)
+# train_data = pd.read_csv('DATA/train_data.csv')  # Not necessary for alignment
 
 st.title("Predict Ground Time")
 
@@ -331,13 +333,31 @@ input_df = pd.DataFrame(input_data)
 
 # Preprocess the input data
 input_df_encoded = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
-input_df_encoded = input_df_encoded.reindex(columns=train_data.columns, fill_value=0)
+
+# Extract expected exogenous variable names from the GLM model
+expected_exog = glm_full.model.exog_names
+
+# Add 'Intercept' if expected
+if 'Intercept' in expected_exog:
+    input_df_encoded['Intercept'] = 1
+
+# Reindex to match the model's expected exogenous variables
+input_df_encoded = input_df_encoded.reindex(columns=expected_exog, fill_value=0)
+
+# Display the processed input data for debugging
+st.write("Processed Input Data for Prediction:")
+st.dataframe(input_df_encoded)
 
 # GLM Prediction
-glm_pred = glm_full.predict(input_df_encoded)
-st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
+try:
+    glm_pred = glm_full.predict(input_df_encoded)
+    st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
+except Exception as e:
+    st.error(f"An error occurred during GLM prediction: {e}")
 
 # Random Forest Prediction
-rf_pred = rf.predict(input_df_encoded)
-st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
-
+try:
+    rf_pred = rf.predict(input_df_encoded)
+    st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
+except Exception as e:
+    st.error(f"An error occurred during Random Forest prediction: {e}")
