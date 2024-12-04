@@ -49,14 +49,21 @@ def load_qqplot_data():
 
 ######################### Sidebar Navigation ##################
 st.sidebar.title("Navigation")
+
+# Initialize section in session state
+if "section" not in st.session_state:
+    st.session_state["section"] = "Docs"  # Default section
+
+# Create buttons for each section
 if st.sidebar.button("Go to Docs"):
-    section = "Docs"
-elif st.sidebar.button("Go to Data Exploratory"):
-    section = "Data Exploratory"
-elif st.sidebar.button("Go to Prediction Apps"):
-    section = "Prediction Apps"
-else:
-    section = "Docs"  # Default section
+    st.session_state["section"] = "Docs"
+if st.sidebar.button("Go to Data Exploratory"):
+    st.session_state["section"] = "Data Exploratory"
+if st.sidebar.button("Go to Prediction Apps"):
+    st.session_state["section"] = "Prediction Apps"
+
+# Use the current section from session state
+section = st.session_state["section"]
 
 
 ######################### Documentation #######################
