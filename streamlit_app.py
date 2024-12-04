@@ -287,6 +287,7 @@ st.write(
     """
 )
 
+
 ######################### Prediction Section ###############################
 
 st.title("Predict Ground Time")
@@ -306,14 +307,11 @@ unique_carrier = st.sidebar.selectbox(
     ]
 )
 
-# Define all possible unique carriers based on training
-all_unique_carriers = [
+# Map any unknown carrier to 'Other' (if applicable)
+if unique_carrier not in [
     'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
     'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
-]
-
-# Map any unknown carrier to 'Other' (if applicable)
-if unique_carrier not in all_unique_carriers:
+]:
     unique_carrier = 'Other'
 
 # Create a DataFrame for input
@@ -331,21 +329,17 @@ input_df = pd.DataFrame(input_data)
 glm_input_df = input_df.copy()
 
 # For Random Forest Prediction (Manually encode categorical variables)
-rf_input_df = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
+rf_input_df = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'])
 
-# Define the expected dummy columns based on training
-expected_dummy_cols = [
-    'UNIQUE_CARRIER_American Airlines Inc.',
-    'UNIQUE_CARRIER_Chautauqua Airlines Inc.',
-    'UNIQUE_CARRIER_Compass Airlines',
-    'UNIQUE_CARRIER_Delta Air Lines Inc.',
-    'UNIQUE_CARRIER_Endeavor Air Inc.',
-    'UNIQUE_CARRIER_Other',
-    # Add all other unique carriers used during training
-]
+# Get the expected feature names from the Random Forest model
+expected_feature_names = rf.feature_names_in_
 
-# Reindex rf_input_df to include all expected dummy columns
-rf_input_df = rf_input_df.reindex(columns=expected_dummy_cols, fill_value=0)
+# Reindex rf_input_df to include all expected features, filling missing columns with 0
+rf_input_df = rf_input_df.reindex(columns=expected_feature_names, fill_value=0)
+
+# Display expected feature names
+st.write("**Expected Feature Names for Random Forest Model:**")
+st.write(expected_feature_names)
 
 # Display the processed input data for debugging
 st.write("**Processed Input Data for GLM Prediction:**")
@@ -357,7 +351,7 @@ st.dataframe(rf_input_df)
 # GLM Prediction
 try:
     glm_pred = glm_full.predict(glm_input_df)
-    st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
+    st.write(f"**GLM Predicted Ground Time:** {glm_pred.iloc[0]:.2f} minutes")
 except Exception as e:
     st.error(f"An error occurred during GLM prediction: {e}")
 
