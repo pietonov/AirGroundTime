@@ -6,7 +6,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import scipy.stats as stats
+import joblib  # Import joblib for loading models
 
+# Load the GLM and RF models from the DATA folder
+@st.cache_resource  # Cache the models to avoid reloading on every app refresh
+def load_models():
+    glm_model = joblib.load('DATA/glm_model.pkl')
+    rf_model = joblib.load('DATA/rf.pkl')
+    return glm_model, rf_model
+
+glm_full, rf = load_models()
 
 
 
@@ -277,5 +286,47 @@ st.write(
 )
 
 
+
+######################### Prediction Section ###############################
+
+st.title("Predict Ground Time")
+
+# User Input Form
+st.sidebar.header("Input Flight Details")
+distance = st.sidebar.number_input("Distance (miles):", min_value=0, value=500)
+large_airport = st.sidebar.selectbox("Large Airport:", [0, 1], index=1)  # 0: No, 1: Yes
+has_passengers = st.sidebar.selectbox("Has Passengers:", [0, 1], index=1)  # 0: No, 1: Yes
+passengers = st.sidebar.number_input("Number of Passengers:", min_value=0, value=150)
+is_winter = st.sidebar.selectbox("Winter Season:", [0, 1], index=0)  # 0: No, 1: Yes
+unique_carrier = st.sidebar.selectbox(
+    "Unique Carrier:", 
+    options=[
+        'American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.',
+        'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'
+    ]
+)
+
+# Create a DataFrame for input
+input_data = {
+    'DISTANCE': [distance],
+    'LARGE_AIRPORT': [large_airport],
+    'HAS_PASSENGERS': [has_passengers],
+    'PASSENGERS': [passengers],
+    'IS_WINTER': [is_winter],
+    'UNIQUE_CARRIER': [unique_carrier]
+}
+input_df = pd.DataFrame(input_data)
+
+# Preprocess the input data
+input_df_encoded = pd.get_dummies(input_df, columns=['UNIQUE_CARRIER'], prefix='UNIQUE_CARRIER')
+input_df_encoded = input_df_encoded.reindex(columns=train_data.columns, fill_value=0)
+
+# GLM Prediction
+glm_pred = glm_full.predict(input_df_encoded)
+st.write(f"**GLM Predicted Ground Time:** {glm_pred[0]:.2f} minutes")
+
+# Random Forest Prediction
+rf_pred = rf.predict(input_df_encoded)
+st.write(f"**Random Forest Predicted Ground Time:** {rf_pred[0]:.2f} minutes")
 
 
