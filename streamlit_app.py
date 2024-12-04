@@ -49,10 +49,15 @@ def load_qqplot_data():
 
 ######################### Sidebar Navigation ##################
 st.sidebar.title("Navigation")
-section = st.sidebar.selectbox(
-    "Go to Section:",
-    ["Docs", "Data Exploratory", "Prediction Apps"]
-)
+if st.sidebar.button("Go to Docs"):
+    section = "Docs"
+elif st.sidebar.button("Go to Data Exploratory"):
+    section = "Data Exploratory"
+elif st.sidebar.button("Go to Prediction Apps"):
+    section = "Prediction Apps"
+else:
+    section = "Docs"  # Default section
+
 
 ######################### Documentation #######################
 if section == "Docs":
