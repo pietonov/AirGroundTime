@@ -1,5 +1,4 @@
 streamlit
-statsmodel
 pandas
 matplotlib
 seaborn
