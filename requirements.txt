@@ -9,3 +9,4 @@ joblib
 statsmodels
 scikit-learn
 patsy
+streamlit-option-menu
