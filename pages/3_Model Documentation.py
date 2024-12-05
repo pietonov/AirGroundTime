@@ -73,6 +73,8 @@ New boolean variables were added to improve the GLM model:
 - **HAS_PASSENGERS**
 - **HAS_FREIGHTS**
 - **HAS_MAIL**
+- **IS_WINTER**
+- **IS_PEAK_SEASON**
 """, unsafe_allow_html=True)
 
 # Optimization
