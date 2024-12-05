@@ -92,7 +92,7 @@ if submitted:
 
 
 ######################### Sidebar Navigation ##################
-t.sidebar.title("Ground Time Predictor Overview")
+st.sidebar.title("Ground Time Predictor Overview")
 st.sidebar.markdown("""
 This application combines cutting-edge machine learning models with robust data analysis techniques to streamline ground operation planning. Designed for aviation professionals and researchers, the Ground Time Predictor is a comprehensive tool for analyzing and improving flight efficiency.
 """)
