@@ -71,6 +71,14 @@ fig_full_heatmap = px.imshow(
     color_continuous_scale=colormap,
     zmin=-1, zmax=1
 )
+
+# Adjust layout size
+fig_full_heatmap.update_layout(
+    width=800,
+    height=800,
+    margin=dict(l=50, r=50, t=50, b=50)
+)
+
 st.plotly_chart(fig_full_heatmap)
 
 # Histogram
