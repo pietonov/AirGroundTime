@@ -62,28 +62,31 @@ Based on the data, we can expect which variables might have an impact. Below is 
 
 - **MAIL**  
     Similar impact as freights.
-""")
+""", unsafe_allow_html=True)
 
 # Feature Engineering
 st.header("Feature Engineering")
 st.markdown("""
+<a id="feature-engineering"></a>
 New boolean variables were added to improve the GLM model:
 
 - **HAS_PASSENGERS**
 - **HAS_FREIGHTS**
 - **HAS_MAIL**
-""")
+""", unsafe_allow_html=True)
 
 # Optimization
 st.header("Optimization")
 st.markdown("""
+<a id="optimization"></a>
 Since the GLM model didn't run efficiently, we optimized the model by downcasting numerical columns.
 Also, reduced the **UNIQUE_CARRIER** number to only the top 20.
-""")
+""", unsafe_allow_html=True)
 
 # Encoding
 st.header("Encoding")
 st.markdown("""
+<a id="encoding"></a>
 **UNIQUE_CARRIER** and **LARGE_AIRPORT** need encoding. Thus, one-hot encoding was applied for **UNIQUE_CARRIER** and binary encoding for **LARGE_AIRPORT**. It was a mistake in the mid-semester to say that encoding is not required. One-hot encoding has been chosen over label and target encoding based on the following cons:
 
 - **One-hot encoding**  
@@ -94,18 +97,19 @@ st.markdown("""
 
 - **Target encoding**  
     Cons: Risk of data leakage.
-""")
+""", unsafe_allow_html=True)
 
 # Model Train
 st.header("Model Train")
 st.markdown("""
+<a id="model-train"></a>
 The 2024 data was omitted since the cohort is incomplete.  
 **Train data**: 2014 - 2022  
 **Test data**: 2023  
 
 - Training data: 2014-2022 (n=126,351)
 - Test data: 2023 (n=11,171)
-""")
+""", unsafe_allow_html=True)
 
 # Modeling
 st.header("Modeling")
@@ -113,7 +117,7 @@ st.header("Modeling")
 ## Baseline
 st.subheader("Baseline")
 st.markdown("Intercept-only model as a benchmark.")
-st.markdown("""
+st.markdown("""<a id="baseline"></a>
 **Weighted Intercept-Only Model Summary:**
 
 ```
@@ -155,11 +159,11 @@ Covariance Type:            nonrobust
 Intercept     23.0890      0.199    115.967      0.000      22.699      23.479
 ==============================================================================
 ```
-""")
+""", unsafe_allow_html=True)
 
 # GLM Model Summary
 st.subheader("GLM Model Summary")
-st.markdown("""
+st.markdown("""<a id="glm-model-summary"></a>
 | GLM Model         | Variables Added          | Deviation (Start -> End) | Improvement | Status                               |
 |-------------------|--------------------------|--------------------------|-------------|--------------------------------------|
 | GLM 0             | INTERCEPT_ONLY           | 20.1269                  | N/A         | Initial model                        |
@@ -176,15 +180,16 @@ st.markdown("""
 | GLM 5F            | IS_WINTER                | 20.0164 -> 20.0089       | -0.0075     | Accepted (selected isolation)        |
 | GLM 5G            | PEAK_SEASON              | 20.0164 -> 20.0162       | -0.0002     | Rejected (isolated winter accepted)  |
 | **GLM FULL MODEL**| **FULL + HAS_PASSENGERS**| **20.1269 -> 20.0091**   | **-0.1178** | **Final model**                      |
-""")
+""", unsafe_allow_html=True)
 
 st.markdown("""
 **Note:** `HAS_PASSENGERS` is added in the final GLM model to support the `PASSENGERS` variable even though it slightly worsens the model as of right now.  
 Based on the test above, we accept `UNIQUE_CARRIER`, `DISTANCE`, `LARGE_AIRPORT`, `HAS_PASSENGERS`, `PASSENGERS`, and `IS_WINTER`.
-""")
+""", unsafe_allow_html=True)
 
 # Dropped Variable Table
 st.subheader("GLM Drop Test Results")
+st.markdown("""<a id="glm-drop-test-results"></a>""", unsafe_allow_html=True)
 df_glm_drop = pd.DataFrame({
     'Dropped Variable': ['Full Model (GLM Full)', 'Drop UNIQUE_CARRIER', 'Drop DISTANCE', 'Drop LARGE_AIRPORT', 'Drop HAS_PASSENGERS', 'Drop PASSENGERS', 'Drop IS_WINTER', 'Intercept-Only Model'],
     'Weighted RMSE': [20.0091, 20.1064, 20.0086, 20.0135, 20.0089, 20.0239, 20.0165, 20.1269],
@@ -196,10 +201,11 @@ st.table(df_glm_drop)
 
 st.markdown("""
 Based on the drop test above, we retain all the variables since removing any of them results in noticeably higher RMSEs. For `DISTANCE`, even though it has minimal impact, it's reasonable to keep it as a significant feature.
-""")
+""", unsafe_allow_html=True)
 
 # Residual Plot
 st.subheader("Residual Plot")
+st.markdown("""<a id=residual-plot""></a>""", unsafe_allow_html=True)
 residual_plot_path = 'DATA/residual.png'
 if os.path.exists(residual_plot_path):
     st.image(residual_plot_path, caption='Residual Plot', use_column_width=True)
@@ -208,11 +214,11 @@ else:
 
 st.markdown("""
 Based on the residual plot above, it indicates that the GLM has similarly distributed errors across the range of predictions between 15 to 35 minutes. However, there are significant outliers in the residuals. This suggests that the model has difficulties fitting some of the observations.
-""")
+""", unsafe_allow_html=True)
 
 # GLM Full Model Summary
 st.subheader("GLM Full Model Summary")
-st.markdown("""
+st.markdown("""<a id="glm-full-model-summary"></a>
 ```
 ==============================================================================
                 Generalized Linear Model Regression Results                  
@@ -257,7 +263,7 @@ PASSENGERS                                                    0.0321      0.000 
 IS_WINTER                                                     3.0632      0.025    123.064      0.000       3.014       3.112
 =============================================================================================================================
 ```
-""")  # Replace with actual summary if needed
+""", unsafe_allow_html=True)
 
 st.markdown("""
 **1. Model Fitness**
@@ -278,13 +284,15 @@ st.markdown("""
 - **IS_WINTER**: Winter months contribute to longer `GROUND_TIME` (+3.0632 minutes), likely due to de-icing procedures, bad weather, or additional safety checks.
 - **PASSENGERS**: Each passenger increases `GROUND_TIME` by 0.0321 minutes, reflecting boarding and deplaning times.
 - **HAS_PASSENGERS**: Flights without passengers (Freight) have shorter `GROUND_TIME` by -0.6246 minutes.
-""")
+""", unsafe_allow_html=True)
 
 # Random Forest
 st.header("Random Forest")
+st.markdown("""<a id="random-forest"></a>""", unsafe_allow_html=True)
 
 ## Random Forest Testing Results
 st.subheader("Random Forest Testing Results")
+st.markdown("""<a id="random-forest-testing-results"></a>""", unsafe_allow_html=True)
 rf_testing_data = {
     'Parameter Type': ['mtry (max_features)', 'mtry (max_features)', 'mtry (max_features)', 'ntree (n_estimators)', 'ntree (n_estimators)', 'ntree (n_estimators)', 'Non-replacement RF'],
     'Parameter Value': [1, 2, 3, 100, 150, 200, 'N/A'],
@@ -299,10 +307,11 @@ The best Weighted RMSE is observed with `mtry = 2` and `ntree = 100` (22.5306).
 The best Unweighted RMSE is also achieved with `mtry = 2` and `ntree = 100` (101.6853).  
 Non-replacement Random Forest shows higher RMSE values, indicating poorer performance compared to other configurations.  
 Therefore, **mtry = 2** and **ntree = 100** are selected based on this testing.
-""")
+""", unsafe_allow_html=True)
 
 ## Drop Testing Results
 st.subheader("Random Forest Drop Testing Results")
+st.markdown("""<a id="random-forest-drop-testing-results"></a>""", unsafe_allow_html=True)
 rf_drop_data = {
     'Dropped Variable': ['None (Baseline)', 'DISTANCE', 'LARGE_AIRPORT', 'HAS_PASSENGERS', 'PASSENGERS', 'IS_WINTER'],
     'Weighted RMSE': [22.5306, 22.8714, 22.5250, 21.9451, 22.3390, 22.0356],
@@ -313,10 +322,11 @@ st.table(df_rf_drop)
 
 st.markdown("""
 Based on the drop testing, dropping `HAS_PASSENGERS` significantly improves performance, but logically, this variable makes sense as a predictor together with `PASSENGERS`. Therefore, we decided to keep it. Similarly, all other variables like `IS_WINTER` contribute meaningfully, and none should be dropped to maintain predictive accuracy and logical consistency.
-""")
+""", unsafe_allow_html=True)
 
 ## Feature Importance
 st.subheader("Feature Importance")
+st.markdown("""<a id="feature-importance"></a>""", unsafe_allow_html=True)
 feature_importance_data = {
     'Feature': ['DISTANCE', 'PASSENGERS', 'UNIQUE_CARRIER_Other', 'IS_WINTER', 'HAS_PASSENGERS', 'LARGE_AIRPORT', 'UNIQUE_CARRIER_Delta Air Lines Inc.', 'UNIQUE_CARRIER_SkyWest Airlines Inc.', 'UNIQUE_CARRIER_Federal Express Corporation', 'UNIQUE_CARRIER_Spirit Air Lines', 'UNIQUE_CARRIER_Endeavor Air Inc.', 'UNIQUE_CARRIER_United Air Lines Inc.', 'UNIQUE_CARRIER_ExpressJet Airlines LLC d/b/a aha!', 'UNIQUE_CARRIER_Southwest Airlines Co.', 'UNIQUE_CARRIER_Republic Airline', 'UNIQUE_CARRIER_United Parcel Service', 'UNIQUE_CARRIER_Envoy Air', 'UNIQUE_CARRIER_JetBlue Airways', 'UNIQUE_CARRIER_American Airlines Inc.', 'UNIQUE_CARRIER_GoJet Airlines LLC d/b/a United...', 'UNIQUE_CARRIER_Shuttle America Corp.', 'UNIQUE_CARRIER_PSA Airlines Inc.', 'UNIQUE_CARRIER_Compass Airlines', 'UNIQUE_CARRIER_Frontier Airlines Inc.', 'UNIQUE_CARRIER_Chautauqua Airlines Inc.'],
     'Importance': [0.540547, 0.341734, 0.049398, 0.019901, 0.017056, 0.015274, 0.005022, 0.002996, 0.001800, 0.001192, 0.000822, 0.000745, 0.000584, 0.000551, 0.000482, 0.000470, 0.000261, 0.000257, 0.000204, 0.000179, 0.000158, 0.000120, 0.000090, 0.000088, 0.000070]
@@ -326,9 +336,10 @@ st.table(df_feature_importance)
 
 ## Partial Dependence Plots
 st.subheader("Partial Dependence Plots")
+st.markdown("""<a id="partial-dependence-plots"></a>""", unsafe_allow_html=True)
 st.markdown("""
 **Partial Dependence Plot for DISTANCE**
-""")
+""", unsafe_allow_html=True)
 pd_distance_path = 'DATA/pd_distance.png'
 if os.path.exists(pd_distance_path):
     st.image(pd_distance_path, caption='Partial Dependence Plot: DISTANCE', use_column_width=True)
@@ -338,11 +349,11 @@ else:
 st.markdown("""
 At lower `DISTANCE` values, the partial dependence remains consistent.  
 Around 1750 miles, the prediction drops sharply, indicating a threshold where `DISTANCE` significantly reduces the predicted value, then recovers quickly. This indicates a subset of data with certain behavior.
-""")
+""", unsafe_allow_html=True)
 
 st.markdown("""
 **Partial Dependence Plot for PASSENGERS**
-""")
+""", unsafe_allow_html=True)
 pd_passenger_path = 'DATA/pd_passenger.png'
 if os.path.exists(pd_passenger_path):
     st.image(pd_passenger_path, caption='Partial Dependence Plot: PASSENGERS', use_column_width=True)
@@ -355,10 +366,11 @@ The partial dependence plots (PDPs) show how `PASSENGERS` influences `GROUND_TIM
 `GROUND_TIME` generally increases as the number of `PASSENGERS` increases. There are fluctuations in the dependence (e.g., at 85 and 180 passengers), which might be due to variations in the data or interactions with other features.
 
 The second plot shows no meaningful values for `PASSENGERS` because it doesn't make sense to have passengers (`PASSENGERS > 0`) when `HAS_PASSENGERS = 0`. This highlights the limitation of PDPs for certain predictors when logical relationships (e.g., `HAS_PASSENGERS = 0` implying `PASSENGERS = 0`) exist in the data.
-""")
+""", unsafe_allow_html=True)
 
 # Unique Carrier Analysis
 st.subheader("Unique Carrier Analysis")
+st.markdown("""<a id="unique-carrier-analysis"></a>""", unsafe_allow_html=True)
 carrier_data = {
     '#': list(range(1, 21)),
     'Unique Carrier': [
