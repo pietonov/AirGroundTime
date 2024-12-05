@@ -9,28 +9,17 @@ import scipy.stats as stats
 import joblib
 import os
 
-# Set page configuration
+
 st.set_page_config(page_title="Ground Time Predictor", layout="wide")
 
-# Center title and image using Streamlit styling
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <h1>Ground Time Predictor 🛬</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-# Display the image centered using st.image
-st.image("DATA/GroundTimePredictor.png", caption="Ground Operations Optimization", use_column_width=True)
+st.title("Ground Time Predictor 🛬")
+st.image("DATA/GroundTimePredictor.png", caption="Ground Operations Optimization", width=800)
 
-# Introduction
 st.write("""
 Welcome to the **Ground Time Predictor**, a tool designed to estimate the duration of ground operations for flights based on input parameters such as airport, aircraft type, and operational conditions.
 """)
 
-# Why use the app
 st.subheader("Why Use This App?")
 st.write("""
 - Optimize flight schedules.
@@ -38,7 +27,6 @@ st.write("""
 - Reduce delays for better customer satisfaction.
 """)
 
-# How to use the app
 st.subheader("How to Use This App")
 st.write("""
 1. Go to the **Prediction Apps** page from the sidebar.
@@ -47,8 +35,8 @@ st.write("""
 4. Explore insights to improve operational planning.
 """)
 
-# Info message
 st.info("Start by navigating to the **Prediction Apps** page in the sidebar!")
+
 
 
 
