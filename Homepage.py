@@ -14,7 +14,7 @@ st.set_page_config(page_title="Ground Time Predictor", layout="wide")
 
 
 st.title("Ground Time Predictor 🛬")
-st.image("DATA/airplane.jpg", caption="Ground Operations Optimization", use_column_width=True)
+st.image("DATA/GroundTimePredictor.png", caption="Ground Operations Optimization", use_column_width=True)
 
 st.write("""
 Welcome to the **Ground Time Predictor**, a tool designed to estimate the duration of ground operations for flights based on input parameters such as airport, aircraft type, and operational conditions.
