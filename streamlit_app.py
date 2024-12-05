@@ -58,6 +58,8 @@ if "section" not in st.session_state:
 
 if st.sidebar.button("Go to Prediction Apps"):
     st.session_state["section"] = "Prediction Apps"
+if st.sidebar.button("Go to Model Development"):
+    st.session_state["section"] = "Model Development"
 if st.sidebar.button("Go to Data Exploratory"):
     st.session_state["section"] = "Data Exploratory"
 if st.sidebar.button("Go to Docs"):
