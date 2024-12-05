@@ -334,6 +334,19 @@ feature_importance_data = {
 df_feature_importance = pd.DataFrame(feature_importance_data)
 st.table(df_feature_importance)
 
+# Categorize features
+df_feature_importance['Category'] = df_feature_importance['Feature'].apply(lambda x: 'UNIQUE_CARRIER' if 'UNIQUE_CARRIER' in x else x)
+
+# Group by category and sum importance
+bundled_importance = df_feature_importance.groupby('Category')['Importance'].sum().reset_index()
+bundled_importance = bundled_importance.rename(columns={"Category": "Feature", "Importance": "Total Importance"})
+
+# Sort the DataFrame
+bundled_importance_sorted = bundled_importance.sort_values(by='Total Importance', ascending=False)
+
+# Display the table in Streamlit
+st.table(bundled_importance_sorted)
+
 ## Partial Dependence Plots
 st.subheader("Partial Dependence Plots")
 st.markdown("""<a id="partial-dependence-plots"></a>""", unsafe_allow_html=True)
