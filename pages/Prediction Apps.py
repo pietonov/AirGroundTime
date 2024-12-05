@@ -30,6 +30,30 @@ glm_full, rf = load_models()
 
 st.title("Ground Time Prediction")
 
+unique_carriers = [
+    'American Airlines Inc.',
+    'Delta Air Lines Inc.',
+    'United Air Lines Inc.',
+    'Southwest Airlines Co.',
+    'Alaska Airlines Inc.',
+    'SkyWest Airlines Inc.',
+    'Federal Express Corporation',
+    'Spirit Air Lines',
+    'Endeavor Air Inc.',
+    'ExpressJet Airlines LLC d/b/a aha!',
+    'Republic Airline',
+    'United Parcel Service',
+    'Envoy Air',
+    'JetBlue Airways',
+    'GoJet Airlines LLC d/b/a United Express',
+    'Shuttle America Corp.',
+    'PSA Airlines Inc.',
+    'Compass Airlines',
+    'Frontier Airlines Inc.',
+    'Chautauqua Airlines Inc.',
+    'Other'
+]
+
 # User Input Form
 with st.form("prediction_form"):
     st.header("Input Flight Details")
@@ -38,8 +62,7 @@ with st.form("prediction_form"):
     has_passengers = st.selectbox("Has Passengers:", [1, 0], format_func=lambda x: "Yes" if x else "No")
     passengers = st.number_input("Number of Passengers:", min_value=0, value=150, disabled=not has_passengers)
     is_winter = st.selectbox("Winter Season:", [1, 0], format_func=lambda x: "Yes" if x else "No")
-    unique_carrier = st.selectbox("Carrier:", ['American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.', 'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'])
-
+    unique_carrier = st.selectbox("Carrier:", unique_carriers)
     submitted = st.form_submit_button("Predict")
 
 if submitted:
