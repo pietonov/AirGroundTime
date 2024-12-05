@@ -12,30 +12,50 @@ import os
 
 st.set_page_config(page_title="Ground Time Predictor", layout="wide")
 
+# Header Section
+st.title("Ground Time Predictor")
+st.image(
+    "DATA/GroundTimePredictor.png", 
+    caption="Streamlining Ground Operations for Better Efficiency", 
+    width=800
+)
 
-st.title("Ground Time Predictor 🛬")
-st.image("DATA/GroundTimePredictor.png", caption="Ground Operations Illustration by ChatGPT", width=800)
-
+# Introduction
 st.write("""
-Welcome to the **Ground Time Predictor**, a tool designed to estimate the duration of ground operations for flights based on input parameters such as airport, aircraft type, and operational conditions.
+Welcome to the **Ground Time Predictor**, an advanced tool designed to estimate ground operation times for flights. Whether you're an airline operator, airport planner, or aviation enthusiast, this app provides actionable insights to optimize your operations.
 """)
 
-st.subheader("Why Use This App?")
-st.write("""
-- Optimize flight schedules.
-- Improve airport ground efficiency.
-- Reduce delays for better customer satisfaction.
+# Key Benefits
+st.subheader("Why Choose the Ground Time Predictor?")
+st.markdown("""
+- ✈️ **Enhance Efficiency**: Streamline ground operations and reduce turnaround time.
+- 🕒 **Predict Delays**: Get reliable predictions for proactive decision-making.
+- 📊 **Data-Driven Insights**: Use machine learning models to improve planning and logistics.
+- 🌍 **Scalable Solution**: Suitable for small, medium, and large airports worldwide.
 """)
 
+# How to Use Section
 st.subheader("How to Use This App")
-st.write("""
-1. Go to the **Prediction Apps** page from the sidebar.
-2. Input details about the flight and ground conditions.
-3. Click **Predict** to calculate estimated ground time.
-4. Explore insights to improve operational planning.
+st.markdown("""
+1. Navigate to the **Prediction Apps** page from the sidebar.
+2. Enter flight details, including **aircraft type**, **distance**, and other factors.
+3. Click the **Predict** button to get the estimated ground time.
+4. Explore **visualizations** and **insights** to optimize your planning.
 """)
 
-st.info("Start by navigating to the **Prediction Apps** page in the sidebar!")
+# Feature Highlights
+st.subheader("Features")
+st.markdown("""
+- **Interactive Visualizations**: Dynamic charts to analyze flight and ground statistics.
+- **Machine Learning Models**: Leveraging advanced GLM and Random Forest techniques for accurate predictions.
+- **Customizable Inputs**: Tailored predictions based on your unique flight parameters.
+- **Documentation**: Comprehensive guidance for aviation professionals.
+""")
+
+# Call to Action
+st.info("📂 Ready to begin? Head over to the **Prediction Apps** page using the sidebar to start your journey.")
+st.info("📧 Need support? Contact us for assistance or inquiries.")
+
 
 
 
