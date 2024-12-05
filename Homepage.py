@@ -9,21 +9,21 @@ import scipy.stats as stats
 import joblib
 import os
 
-
 # Set page configuration
 st.set_page_config(page_title="Ground Time Predictor", layout="wide")
 
-# Center title and image using HTML
+# Center title and image using Streamlit styling
 st.markdown(
     """
     <div style="text-align: center;">
         <h1>Ground Time Predictor 🛬</h1>
-        <img src="DATA/GroundTimePredictor.png" alt="Ground Operations Optimization" width="800">
-        <p><em>Ground Operations Optimization</em></p>
     </div>
     """,
     unsafe_allow_html=True
 )
+
+# Display the image centered using st.image
+st.image("DATA/GroundTimePredictor.png", caption="Ground Operations Optimization", use_column_width=True)
 
 # Introduction
 st.write("""
