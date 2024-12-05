@@ -10,7 +10,7 @@ import joblib
 import os
 
 
-st.set_page_config(page_title="Ground Time Predictor", layout="wide")
+st.set_page_config(page_title="Ground Time Predictor")
 
 # Header Section
 st.title("Ground Time Predictor")
@@ -28,10 +28,10 @@ Welcome to the **Ground Time Predictor**, an advanced tool designed to estimate 
 # Key Benefits
 st.subheader("Why Choose the Ground Time Predictor?")
 st.markdown("""
-- ✈️ **Enhance Efficiency**: Streamline ground operations and reduce turnaround time.
-- 🕒 **Predict Delays**: Get reliable predictions for proactive decision-making.
-- 📊 **Data-Driven Insights**: Use machine learning models to improve planning and logistics.
-- 🌍 **Scalable Solution**: Suitable for small, medium, and large airports worldwide.
+- **Enhance Efficiency**: Streamline ground operations and reduce turnaround time.
+- **Predict Delays**: Get reliable predictions for proactive decision-making.
+- **Data-Driven Insights**: Use machine learning models to improve planning and logistics.
+- **Scalable Solution**: Suitable for small, medium, and large airports worldwide.
 """)
 
 # How to Use Section
@@ -53,8 +53,8 @@ st.markdown("""
 """)
 
 # Call to Action
-st.info("📂 Ready to begin? Head over to the **Prediction Apps** page using the sidebar to start your journey.")
-st.info("📧 Need support? Contact us for assistance or inquiries.")
+st.info("Ready to begin? Head over to the **Prediction Apps** page using the sidebar to start your journey.")
+st.info("Need support? Contact us for assistance or inquiries.")
 
 
 
