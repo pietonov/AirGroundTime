@@ -30,7 +30,7 @@ Designed for aviation professionals and researchers, the Ground Time Predictor i
 
 
 # Key Benefits
-st.sidebar.title("Application Highlights")
+st.subheader("Application Highlights")
 st.markdown("""
 - **Enhance Efficiency**: Streamline ground operations and reduce turnaround time with advanced prediction models.
 - **Predict Delays**: Get reliable predictions using Generalized Linear Models (GLM) and Random Forest for proactive decision-making.
@@ -109,8 +109,7 @@ st.sidebar.title("Contact & Support")
 st.sidebar.markdown("""
 For professional inquiries or feedback:  
 - **Email**: support@groundtimepredictor.com  
-- **Phone**: +1 (555) 987-6543  
-- **Website**: [www.groundtimepredictor.com](https://www.groundtimepredictor.com)  
+- **Phone**: +1 (555) 987-6543
 """)
 
 
