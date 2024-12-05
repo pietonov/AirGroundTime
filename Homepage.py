@@ -109,7 +109,8 @@ st.sidebar.title("Contact & Support")
 st.sidebar.markdown("""
 For professional inquiries or feedback:  
 - **Email**: support@groundtimepredictor.com  
-- **Phone**: +1 (555) 987-6543
+- **Phone**: +1 (555) 987-6543  
+- **Website**: [www.groundtimepredictor.com](https://www.groundtimepredictor.com)  
 """)
 
 
