@@ -25,7 +25,7 @@ st.sidebar.markdown("""
   - [Feature Importance](#feature-importance)
   - [Partial Dependence Plots](#partial-dependence-plots)
 - [Unique Carrier Analysis](#unique-carrier-analysis)
-""")
+""", unsafe_allow_html=True)
 
 
 st.title("Model Development")
@@ -37,7 +37,7 @@ st.markdown("""
 Note that some variables, such as **PASSENGERS**, **FREIGHT**, **MAIL**, **RAMP_TO_RAMP**, and **AIR_TIME** should be divided by **DEPARTURE_PERFORMED**. Dividing by the number of departures gives the average time per flight, to ensure consistent comparisons between periods or across routes. This mistake in the previous submission is an example of how a statistician should have knowledge and sense in the data itself instead of blindly processing the data.
 
 **Focus on DTW only** since it encountered memory overload on several occasions during GLM modeling.
-""")
+""", unsafe_allow_html=True)
 
 # Predictor Variable (Initial Assessment)
 st.header("Predictor Variable (Initial Assessment)")
