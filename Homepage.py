@@ -9,6 +9,37 @@ import scipy.stats as stats
 import joblib
 import os
 
+
+st.set_page_config(page_title="Ground Time Predictor", layout="wide")
+
+
+st.title("Ground Time Predictor 🛬")
+st.image("airplane.jpg", caption="Ground Operations Optimization", use_column_width=True)
+
+st.write("""
+Welcome to the **Ground Time Predictor**, a tool designed to estimate the duration of ground operations for flights based on input parameters such as airport, aircraft type, and operational conditions.
+""")
+
+st.subheader("Why Use This App?")
+st.write("""
+- Optimize flight schedules.
+- Improve airport ground efficiency.
+- Reduce delays for better customer satisfaction.
+""")
+
+st.subheader("How to Use This App")
+st.write("""
+1. Go to the **Prediction Apps** page from the sidebar.
+2. Input details about the flight and ground conditions.
+3. Click **Predict** to calculate estimated ground time.
+4. Explore insights to improve operational planning.
+""")
+
+st.info("Start by navigating to the **Prediction Apps** page in the sidebar!")
+
+
+
+
 ######################### Load Models #########################
 @st.cache_resource
 def load_models():
