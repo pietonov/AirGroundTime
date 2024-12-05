@@ -21,18 +21,22 @@ st.image(
 )
 
 # Introduction
+st.subheader("Ground Time Predictor Overview")
 st.write("""
-Welcome to the **Ground Time Predictor**, an advanced tool designed to estimate ground operation times for flights. Whether you're an airline operator, airport planner, or aviation enthusiast, this app provides actionable insights to optimize your operations.
+Welcome to the **Ground Time Predictor**, an advanced tool designed to estimate ground operation times for flights. This application combines cutting-edge machine learning models with robust data analysis techniques to streamline ground operation planning. Whether you're an airline operator, airport planner, or aviation enthusiast, this app provides actionable insights to optimize your operations.
+
+Designed for aviation professionals and researchers, the Ground Time Predictor is a comprehensive tool for analyzing trends, improving efficiency, and making data-driven decisions to enhance the overall ground handling process.
 """)
 
 
 # Key Benefits
-st.subheader("Why Choose the Ground Time Predictor?")
+st.sidebar.title("Application Highlights")
 st.markdown("""
-- **Enhance Efficiency**: Streamline ground operations and reduce turnaround time.
-- **Predict Delays**: Get reliable predictions for proactive decision-making.
-- **Data-Driven Insights**: Use machine learning models to improve planning and logistics.
-- **Scalable Solution**: Suitable for small, medium, and large airports worldwide.
+- **Enhance Efficiency**: Streamline ground operations and reduce turnaround time with advanced prediction models.
+- **Predict Delays**: Get reliable predictions using Generalized Linear Models (GLM) and Random Forest for proactive decision-making.
+- **Data-Driven Insights**: Leverage feature importance rankings, correlation analysis, and trend visualizations to improve planning and logistics.
+- **Scalable Solution**: Designed for airports of all sizes, from regional hubs to international gateways, supporting global applicability.
+- **Comprehensive Documentation**: Ensure transparency and reproducibility with detailed guidance for aviation professionals and researchers.
 """)
 
 
@@ -45,26 +49,46 @@ st.markdown("""
 4. Explore **visualizations** and **insights** to optimize your planning.
 """)
 
-# Feature Highlights
-st.subheader("Features")
+
+# Insights Section
+st.subheader("Insights at a Glance")
 st.markdown("""
-- **Interactive Visualizations**: Dynamic charts to analyze flight and ground statistics.
-- **Machine Learning Models**: Leveraging advanced GLM and Random Forest techniques for accurate predictions.
-- **Customizable Inputs**: Tailored predictions based on your unique flight parameters.
-- **Documentation**: Comprehensive guidance for aviation data science enthusiast.
+- **Ground Time Drivers**:  
+  - Longer distances reduce ground time marginally.  
+  - Winter conditions significantly increase delays.  
+  - Passenger-heavy flights require more turnaround time.
+- **Efficiency Variability**: Airlines with dedicated ground handling teams consistently outperform their peers.  
 """)
+
+# Assumptions and Methodology
+st.subheader("Assumptions & Methodology")
+st.markdown("""
+- **Generalized Linear Models (GLM)**: Assumes a Gaussian distribution of ground time and linear relationships with predictors.  
+- **Random Forest**: Handles complex interactions and non-linear relationships with high accuracy, ensuring robustness.  
+- **Feature Selection**: Incorporates variables based on domain expertise and rigorous statistical testing to maintain relevance and significance.  
+- **Data Integrity**: Missing data was addressed using median imputation to ensure consistency and reliability in model performance.  
+""")
+
 
 # Call to Action
 st.info("Ready to begin? Head over to the **Prediction Apps** page using the sidebar to start your journey.")
 st.info("Need support? Contact us for assistance or inquiries.")
 
 
+# Acknowledgments
+st.subheader("Acknowledgments")
+st.markdown("""
+This project was made possible with the following resources and references:  
+- **Bureau of Transportation Statistics (BTS)**: For providing comprehensive aviation datasets that informed this analysis.  
+- **OurAirports Data**: For offering detailed airport-specific metrics used in the modeling process.  
+- **Society of Actuaries (SOA)**: For their resources on statistical modeling techniques, which guided the methodology.  
+
+These organizations publicly available data and materials were critical in development.
+""")
+
 
 ######################### Sidebar Navigation ##################
-st.sidebar.title("Ground Time Predictor Overview")
-st.sidebar.markdown("""
-This application combines cutting-edge machine learning models with robust data analysis techniques to streamline ground operation planning. Designed for aviation professionals and researchers, the Ground Time Predictor is a comprehensive tool for analyzing and improving flight efficiency.
-""")
+
 
 # Key Metrics
 st.sidebar.title("Key Metrics")
@@ -78,33 +102,7 @@ st.sidebar.markdown("""
   - Delta Air Lines Inc.  
 """)
 
-# Application Highlights
-st.sidebar.title("Application Highlights")
-st.sidebar.markdown("""
-- **Advanced Prediction Models**: Leveraging Generalized Linear Models (GLM) and Random Forest for precise estimates.
-- **Data-Driven Insights**: Includes feature importance rankings, correlation analysis, and trend visualizations.
-- **Scalable for Global Use**: Applicable to airports of all sizes, from regional hubs to international gateways.
-- **Comprehensive Documentation**: Supporting transparent and reproducible analyses.
-""")
 
-# Insights Section
-st.sidebar.title("Insights at a Glance")
-st.sidebar.markdown("""
-- **Ground Time Drivers**:  
-  - Longer distances reduce ground time marginally.  
-  - Winter conditions significantly increase delays.  
-  - Passenger-heavy flights require more turnaround time.
-- **Efficiency Variability**: Airlines with dedicated ground handling teams outperform peers consistently.  
-""")
-
-# Assumptions and Methodology
-st.sidebar.title("Assumptions & Methodology")
-st.sidebar.markdown("""
-- **GLM**: Assumes a Gaussian distribution of ground time and linear relationships with predictors.  
-- **Random Forest**: Handles complex interactions and non-linear relationships with high accuracy.  
-- **Feature Selection**: Based on domain knowledge and statistical testing to ensure relevance and significance.  
-- **Data Integrity**: Missing values were imputed using median values, ensuring consistent model performance.
-""")
 
 # Contact Information
 st.sidebar.title("Contact & Support")
@@ -115,14 +113,6 @@ For professional inquiries or feedback:
 - **Website**: [www.groundtimepredictor.com](https://www.groundtimepredictor.com)  
 """)
 
-# Acknowledgments
-st.sidebar.title("Acknowledgments")
-st.sidebar.markdown("""
-We acknowledge the contributions of:  
-- **Bureau of Transportation Statistics**: For detailed aviation datasets.  
-- **OurAirports Data**: For airport-specific metrics.  
-- **Society of Actuaries**: For statistical modeling guidance.
-""")
 
 
 
