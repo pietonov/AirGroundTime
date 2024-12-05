@@ -1,3 +1,6 @@
+#### The code is done by GPT using user input and redact
+
+
 ######################### Import ##############################
 import streamlit as st
 import pandas as pd
@@ -16,7 +19,7 @@ st.set_page_config(page_title="Ground Time Predictor")
 st.title("Ground Time Predictor")
 st.image(
     "DATA/GroundTimePredictor.png", 
-    caption="Streamlining Ground Operations for Better Efficiency", 
+    caption="AI-generated: Streamlining Ground Operations for Better Efficiency", 
     width=800
 )
 
