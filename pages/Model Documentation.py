@@ -208,7 +208,7 @@ st.subheader("Residual Plot")
 st.markdown("""<a id=residual-plot""></a>""", unsafe_allow_html=True)
 residual_plot_path = 'DATA/residual.png'
 if os.path.exists(residual_plot_path):
-    st.image(residual_plot_path, caption='Residual Plot', use_column_width=True)
+    st.image(residual_plot_path, caption='Residual Plot', width=800)
 else:
     st.warning('Residual plot not found.')
 
@@ -342,7 +342,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 pd_distance_path = 'DATA/pd_distance.png'
 if os.path.exists(pd_distance_path):
-    st.image(pd_distance_path, caption='Partial Dependence Plot: DISTANCE', use_column_width=True)
+    st.image(pd_distance_path, caption='Partial Dependence Plot: DISTANCE', width=800)
 else:
     st.warning('Partial Dependence Plot for DISTANCE not found.')
 
