@@ -34,7 +34,7 @@ st.title("Model Development")
 st.header("Data Standardization")
 st.markdown("""
 <a id="data-standardization"></a>
-Note that some variables, such as **PASSENGERS**, **FREIGHT**, **MAIL**, **RAMP_TO_RAMP**, and **AIR_TIME** should be divided by **DEPARTURE_PERFORMED**. Dividing by the number of departures gives the average time per flight, to ensure consistent comparisons between periods or across routes. This mistake in the previous submission is an example of how a statistician should have knowledge and sense in the data itself instead of blindly processing the data.
+Note that some variables, such as **PASSENGERS**, **FREIGHT**, **MAIL**, **RAMP_TO_RAMP**, and **AIR_TIME** should be divided by **DEPARTURE_PERFORMED**. Dividing by the number of departures gives the average time per flight, to ensure consistent comparisons between periods or across routes.
 
 **Focus on DTW only** since it encountered memory overload on several occasions during GLM modeling.
 """, unsafe_allow_html=True)
@@ -87,7 +87,7 @@ Also, reduced the **UNIQUE_CARRIER** number to only the top 20.
 st.header("Encoding")
 st.markdown("""
 <a id="encoding"></a>
-**UNIQUE_CARRIER** and **LARGE_AIRPORT** need encoding. Thus, one-hot encoding was applied for **UNIQUE_CARRIER** and binary encoding for **LARGE_AIRPORT**. It was a mistake in the mid-semester to say that encoding is not required. One-hot encoding has been chosen over label and target encoding based on the following cons:
+**UNIQUE_CARRIER** and **LARGE_AIRPORT** need encoding. Thus, one-hot encoding was applied for **UNIQUE_CARRIER** and binary encoding for **LARGE_AIRPORT**. One-hot encoding has been chosen over label and target encoding based on the following cons:
 
 - **One-hot encoding**  
     Cons: Takes up more space.
