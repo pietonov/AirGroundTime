@@ -52,17 +52,17 @@ st.sidebar.title("Navigation")
 
 # Initialize section in session state
 if "section" not in st.session_state:
-    st.session_state["section"] = "Docs"  # Default section
+    st.session_state["section"] = "Prediction Apps"  # Default section
 
 # Create buttons for each section
 
-if st.sidebar.button("Go to Prediction Apps"):
+if st.sidebar.button("Prediction Apps"):
     st.session_state["section"] = "Prediction Apps"
-if st.sidebar.button("Go to Model Development"):
+if st.sidebar.button("Model Development"):
     st.session_state["section"] = "Model Development"
-if st.sidebar.button("Go to Data Exploratory"):
+if st.sidebar.button("Data Exploratory"):
     st.session_state["section"] = "Data Exploratory"
-if st.sidebar.button("Go to Docs"):
+if st.sidebar.button("Docs"):
     st.session_state["section"] = "Docs"
 
 # Use the current section from session state
@@ -172,7 +172,7 @@ elif section == "Prediction Apps":
         has_passengers = st.selectbox("Has Passengers:", [1, 0], format_func=lambda x: "Yes" if x else "No")
         passengers = st.number_input("Number of Passengers:", min_value=0, value=150, disabled=not has_passengers)
         is_winter = st.selectbox("Winter Season:", [1, 0], format_func=lambda x: "Yes" if x else "No")
-        unique_carrier = st.selectbox("Unique Carrier:", ['American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.', 'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'])
+        unique_carrier = st.selectbox("Carrier:", ['American Airlines Inc.', 'Delta Air Lines Inc.', 'United Air Lines Inc.', 'Southwest Airlines Co.', 'Alaska Airlines Inc.', 'Other'])
 
         submitted = st.form_submit_button("Predict")
 
@@ -388,7 +388,48 @@ elif section == "Model Development":
     st.subheader("GLM Full Model Summary")
     st.markdown("""
     ```
-    [Insert GLM Full Model Summary Here]
+    ==============================================================================
+                    Generalized Linear Model Regression Results                  
+    ==============================================================================
+    Dep. Variable:            GROUND_TIME   No. Observations:               126351
+    Model:                            GLM   Df Residuals:                  2866197
+    Model Family:                Gaussian   Df Model:                           25
+    Link Function:               Identity   Scale:                          239.03
+    Method:                          IRLS   Log-Likelihood:            -1.1916e+07
+    Date:                Wed, 04 Dec 2024   Deviance:                   6.8512e+08
+    Time:                        12:50:01   Pearson chi2:                 6.85e+08
+    No. Iterations:                     3   Pseudo R-squ. (CS):             0.3829
+    Covariance Type:            nonrobust                                         
+    =============================================================================================================================
+                                                                    coef    std err          z      P>|z|      [0.025      0.975]
+    -----------------------------------------------------------------------------------------------------------------------------
+    Intercept                                                    22.8905      0.238     96.283      0.000      22.425      23.356
+    UNIQUE_CARRIER[T.American Airlines Inc.]                      0.9752      0.188      5.177      0.000       0.606       1.344
+    UNIQUE_CARRIER[T.Chautauqua Airlines Inc.]                    0.9024      0.208      4.340      0.000       0.495       1.310
+    UNIQUE_CARRIER[T.Compass Airlines]                            0.4917      0.220      2.236      0.025       0.061       0.923
+    UNIQUE_CARRIER[T.Delta Air Lines Inc.]                       -3.1608      0.181    -17.449      0.000      -3.516      -2.806
+    UNIQUE_CARRIER[T.Endeavor Air Inc.]                          -0.3236      0.184     -1.756      0.079      -0.685       0.038
+    UNIQUE_CARRIER[T.Envoy Air]                                   6.6744      0.208     32.080      0.000       6.267       7.082
+    UNIQUE_CARRIER[T.ExpressJet Airlines LLC d/b/a aha!]         -1.4582      0.187     -7.817      0.000      -1.824      -1.093
+    UNIQUE_CARRIER[T.Federal Express Corporation]                -2.9229      0.255    -11.462      0.000      -3.423      -2.423
+    UNIQUE_CARRIER[T.Frontier Airlines Inc.]                     -1.9981      0.216     -9.230      0.000      -2.422      -1.574
+    UNIQUE_CARRIER[T.GoJet Airlines LLC d/b/a United Express]     0.5893      0.188      3.134      0.002       0.221       0.958
+    UNIQUE_CARRIER[T.JetBlue Airways]                            -1.9616      0.212     -9.274      0.000      -2.376      -1.547
+    UNIQUE_CARRIER[T.Other]                                      -2.5068      0.191    -13.110      0.000      -2.882      -2.132
+    UNIQUE_CARRIER[T.PSA Airlines Inc.]                           4.7844      0.212     22.546      0.000       4.368       5.200
+    UNIQUE_CARRIER[T.Republic Airline]                            3.4161      0.188     18.136      0.000       3.047       3.785
+    UNIQUE_CARRIER[T.Shuttle America Corp.]                      -0.7460      0.200     -3.739      0.000      -1.137      -0.355
+    UNIQUE_CARRIER[T.SkyWest Airlines Inc.]                       0.8888      0.184      4.817      0.000       0.527       1.250
+    UNIQUE_CARRIER[T.Southwest Airlines Co.]                     -7.3822      0.188    -39.316      0.000      -7.750      -7.014
+    UNIQUE_CARRIER[T.Spirit Air Lines]                           -3.9735      0.185    -21.529      0.000      -4.335      -3.612
+    UNIQUE_CARRIER[T.United Air Lines Inc.]                      -0.7153      0.210     -3.414      0.001      -1.126      -0.305
+    UNIQUE_CARRIER[T.United Parcel Service]                      -5.7845      0.276    -20.935      0.000      -6.326      -5.243
+    DISTANCE                                                     -0.0004   2.59e-05    -15.410      0.000      -0.000      -0.000
+    LARGE_AIRPORT                                                 1.1324      0.029     38.877      0.000       1.075       1.190
+    HAS_PASSENGERS                                               -0.6246      0.152     -4.117      0.000      -0.922      -0.327
+    PASSENGERS                                                    0.0321      0.000     81.454      0.000       0.031       0.033
+    IS_WINTER                                                     3.0632      0.025    123.064      0.000       3.014       3.112
+    =============================================================================================================================
     ```
     """)  # Replace with actual summary if needed
 
