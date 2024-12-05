@@ -10,7 +10,8 @@ import joblib
 import os
 
 st.set_page_config(
-    page_title = "Homepage"
+    page_title="Your Custom Title",  # Title of the browser tab
+    page_icon="🚀",  # Optional: Emoji or icon
 )
 
 
