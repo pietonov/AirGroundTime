@@ -4,12 +4,36 @@ import pandas as pd
 import os
 
 
+# Sidebar Table of Contents
+st.sidebar.title("Table of Contents")
+st.sidebar.markdown("""
+- [Data Standardization](#data-standardization)
+- [Predictor Variable (Initial Assessment)](#predictor-variable-initial-assessment)
+- [Feature Engineering](#feature-engineering)
+- [Optimization](#optimization)
+- [Encoding](#encoding)
+- [Model Train](#model-train)
+- [Modeling](#modeling)
+  - [Baseline](#baseline)
+  - [GLM Model Summary](#glm-model-summary)
+  - [GLM Drop Test Results](#glm-drop-test-results)
+  - [Residual Plot](#residual-plot)
+  - [GLM Full Model Summary](#glm-full-model-summary)
+- [Random Forest](#random-forest)
+  - [Random Forest Testing Results](#random-forest-testing-results)
+  - [Random Forest Drop Testing Results](#random-forest-drop-testing-results)
+  - [Feature Importance](#feature-importance)
+  - [Partial Dependence Plots](#partial-dependence-plots)
+- [Unique Carrier Analysis](#unique-carrier-analysis)
+""")
+
 
 st.title("Model Development")
 
 # Data Standardization
 st.header("Data Standardization")
 st.markdown("""
+<a id="data-standardization"></a>
 Note that some variables, such as **PASSENGERS**, **FREIGHT**, **MAIL**, **RAMP_TO_RAMP**, and **AIR_TIME** should be divided by **DEPARTURE_PERFORMED**. Dividing by the number of departures gives the average time per flight, to ensure consistent comparisons between periods or across routes. This mistake in the previous submission is an example of how a statistician should have knowledge and sense in the data itself instead of blindly processing the data.
 
 **Focus on DTW only** since it encountered memory overload on several occasions during GLM modeling.
@@ -18,6 +42,7 @@ Note that some variables, such as **PASSENGERS**, **FREIGHT**, **MAIL**, **RAMP_
 # Predictor Variable (Initial Assessment)
 st.header("Predictor Variable (Initial Assessment)")
 st.markdown("""
+<a id="predictor-variable-initial-assessment"></a>
 Based on the data, we can expect which variables might have an impact. Below is the initial list of candidate variables:
 
 - **UNIQUE_CARRIER**  

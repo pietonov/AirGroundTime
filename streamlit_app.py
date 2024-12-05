@@ -9,6 +9,11 @@ import scipy.stats as stats
 import joblib
 import os
 
+st.set_page_config(
+    page_title = "Homepage"
+)
+
+
 ######################### Load Models #########################
 @st.cache_resource
 def load_models():
