@@ -28,7 +28,7 @@ st.sidebar.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.title("Model Development")
+st.title("Model Documentation")
 
 # Data Standardization
 st.header("Data Standardization")

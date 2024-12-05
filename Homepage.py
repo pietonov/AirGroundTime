@@ -25,6 +25,7 @@ st.write("""
 Welcome to the **Ground Time Predictor**, an advanced tool designed to estimate ground operation times for flights. Whether you're an airline operator, airport planner, or aviation enthusiast, this app provides actionable insights to optimize your operations.
 """)
 
+
 # Key Benefits
 st.subheader("Why Choose the Ground Time Predictor?")
 st.markdown("""
@@ -33,6 +34,7 @@ st.markdown("""
 - **Data-Driven Insights**: Use machine learning models to improve planning and logistics.
 - **Scalable Solution**: Suitable for small, medium, and large airports worldwide.
 """)
+
 
 # How to Use Section
 st.subheader("How to Use This App")
@@ -55,6 +57,7 @@ st.markdown("""
 # Call to Action
 st.info("Ready to begin? Head over to the **Prediction Apps** page using the sidebar to start your journey.")
 st.info("Need support? Contact us for assistance or inquiries.")
+
 
 
 
