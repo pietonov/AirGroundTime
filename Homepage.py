@@ -104,3 +104,6 @@ def load_qqplot_data():
 ######################### Sidebar Navigation ##################
 # Credits
 st.sidebar.title("Credits")
+st.sidebar.info("https://www.transtats.bts.gov/Fields.asp?gnoyr_VQ=FIM")
+st.sidebar.info("https://ourairports.com/data/")
+st.sidebar.info("https://www.soa.org/education/exam-req/edu-exam-atpa/")
