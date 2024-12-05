@@ -60,47 +60,6 @@ st.info("Need support? Contact us for assistance or inquiries.")
 
 
 
-
-
-
-######################### Load Models #########################
-@st.cache_resource
-def load_models():
-    try:
-        glm_path = 'DATA/glm_model.pkl'
-        rf_path = 'DATA/rf.pkl'
-        if not os.path.exists(glm_path) or not os.path.exists(rf_path):
-            raise FileNotFoundError("Model files not found.")
-        glm_model = joblib.load(glm_path)
-        rf_model = joblib.load(rf_path)
-    except Exception as e:
-        st.error(f"Error loading models: {e}")
-        raise
-    return glm_model, rf_model
-
-glm_full, rf = load_models()
-
-######################### Load Data ###########################
-@st.cache
-def load_data():
-    return pd.read_csv('DATA/summarized_flight_data.csv')
-
-@st.cache
-def load_correlation_matrix():
-    return pd.read_csv('DATA/correlation_matrix.csv')
-
-@st.cache
-def load_histogram_summary():
-    return pd.read_csv('DATA/histogram_summary_ground_time.csv')
-
-@st.cache
-def load_boxplot_data():
-    return pd.read_csv('DATA/boxplot_summary.csv')
-
-@st.cache
-def load_qqplot_data():
-    return pd.read_csv('DATA/qq_sample.csv')
-
 ######################### Sidebar Navigation ##################
 st.sidebar.title("Ground Time Predictor Overview")
 st.sidebar.markdown("""
@@ -164,3 +123,44 @@ We acknowledge the contributions of:
 - **OurAirports Data**: For airport-specific metrics.  
 - **Society of Actuaries**: For statistical modeling guidance.
 """)
+
+
+
+
+######################### Load Models #########################
+@st.cache_resource
+def load_models():
+    try:
+        glm_path = 'DATA/glm_model.pkl'
+        rf_path = 'DATA/rf.pkl'
+        if not os.path.exists(glm_path) or not os.path.exists(rf_path):
+            raise FileNotFoundError("Model files not found.")
+        glm_model = joblib.load(glm_path)
+        rf_model = joblib.load(rf_path)
+    except Exception as e:
+        st.error(f"Error loading models: {e}")
+        raise
+    return glm_model, rf_model
+
+glm_full, rf = load_models()
+
+######################### Load Data ###########################
+@st.cache
+def load_data():
+    return pd.read_csv('DATA/summarized_flight_data.csv')
+
+@st.cache
+def load_correlation_matrix():
+    return pd.read_csv('DATA/correlation_matrix.csv')
+
+@st.cache
+def load_histogram_summary():
+    return pd.read_csv('DATA/histogram_summary_ground_time.csv')
+
+@st.cache
+def load_boxplot_data():
+    return pd.read_csv('DATA/boxplot_summary.csv')
+
+@st.cache
+def load_qqplot_data():
+    return pd.read_csv('DATA/qq_sample.csv')
