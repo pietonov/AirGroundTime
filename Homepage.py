@@ -9,12 +9,6 @@ import scipy.stats as stats
 import joblib
 import os
 
-st.set_page_config(
-    page_title="My Custom App Name",  # Sets the title on the browser tab
-    page_icon="🌟",                  # Optional: Add an icon
-    layout="wide"                    # Optional: Layout customization
-)
-
 ######################### Load Models #########################
 @st.cache_resource
 def load_models():
