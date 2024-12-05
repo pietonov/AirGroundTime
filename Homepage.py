@@ -51,7 +51,7 @@ st.markdown("""
 - **Interactive Visualizations**: Dynamic charts to analyze flight and ground statistics.
 - **Machine Learning Models**: Leveraging advanced GLM and Random Forest techniques for accurate predictions.
 - **Customizable Inputs**: Tailored predictions based on your unique flight parameters.
-- **Documentation**: Comprehensive guidance for aviation professionals.
+- **Documentation**: Comprehensive guidance for aviation data science enthusiast.
 """)
 
 # Call to Action
@@ -102,4 +102,5 @@ def load_qqplot_data():
     return pd.read_csv('DATA/qq_sample.csv')
 
 ######################### Sidebar Navigation ##################
-st.sidebar.title("Navigation")
+# Credits
+st.sidebar.title("Credits")
